@@ -50,7 +50,7 @@
                   </mat-form-field>
 
                 </div>
-                <div class="col s12 m3 l3">
+                <!-- <div class="col s12 m3 l3">
                   <mat-form-field appearance="outline">
                     <mat-label>Country</mat-label>
                     <mat-select name="country" #country="ngModel" [(ngModel)]="data.country" required>
@@ -68,7 +68,7 @@
                     <p *ngIf="country.errors?.required">This field is required</p>
                   </div>
 
-                </div>
+                </div> -->
                 <ng-container *ngIf="checkRight.scanning_rights == 'Yes' || checkRight.point_transfer_right == 'Yes' ">
                   <div class="col s12 m3 l3">
                     <mat-form-field appearance="outline">
