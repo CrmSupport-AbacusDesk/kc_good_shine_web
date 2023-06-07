@@ -20,7 +20,7 @@
                   <mat-form-field appearance="outline">
                     <mat-label>User Type</mat-label>
                     <mat-select  name="types" [(ngModel)]="data.types" #types="ngModel" (selectionChange)="pointCategory_data(data.types == 'Retailer' ? 'Master Box' : 'Item Box'); districts = []; getState()" >
-                      <mat-option  value="Retailer">Retailer</mat-option>
+                      <!-- <mat-option  value="Retailer">Retailer</mat-option> -->
                       <mat-option  value="Influencer">Influencer</mat-option>
                     </mat-select>
                   </mat-form-field>

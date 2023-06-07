@@ -45,7 +45,7 @@ export class UserAddComponent implements OnInit {
       this.getBrand();
       this.getStateList();
       this.get_module_data();
-      this.data.user_type = 'Sales User';
+      this.data.user_type = 'System User';
       this.getReportManager('');
       this.get_sales_user_type(this.data.user_type, '');
       this.assign_login_data = this.session.getSession();
