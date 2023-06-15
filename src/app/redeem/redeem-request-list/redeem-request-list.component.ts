@@ -78,7 +78,7 @@ export class RedeemRequestListComponent implements OnInit {
   }
   redeemRequestList() {
     this.filter.status = this.active_tab;
-    this.filter.paymentMode = this.redeemType;
+    this.filter.redeemType = this.redeemType;
     this.loader = true;
     if (this.pagenumber > this.total_page) {
       this.pagenumber = this.total_page;
@@ -238,6 +238,38 @@ export class RedeemRequestListComponent implements OnInit {
         this.toast.errorToastr(result['statusMsg'])
       }
     }));
+  }
+  opengiftDialog(id,type, redeem_type, gift_status ): void {
+    if(gift_status == 'Received'){
+      this.alert.confirm('You want to change status ?').then((result) => {
+        if (result) {
+          this.service.post_rqst({'status': gift_status, 'id':id},'RedeemRequest/redeemRequestGiftStatusChange').subscribe((result)=>
+          {
+            if (result['statusCode'] == 200){
+              this.toast.successToastr(result['statusMsg']);
+              this.redeemRequestList();
+            }
+            else{
+              this.toast.errorToastr(result['statusMsg']);
+            }
+          })
+        }
+      });
+    }
+    else{
+      const dialogRef = this.dialog.open(RedeemStatusModalComponent, {
+        width: '400px', data: {
+          'id': id,
+          'delivery_from': type,
+          'redeem_type':redeem_type,
+          'gift_status':gift_status,
+        }
+      });
+
+      dialogRef.afterClosed().subscribe(result => {
+        this.redeemRequestList();
+      });
+    }
   }
 
 
