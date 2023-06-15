@@ -10,7 +10,7 @@ import { Location } from '@angular/common';
 import { ToastrManager } from 'ng6-toastr-notifications';
 import { MatDialog } from '@angular/material';
 import { DesignationComponent } from '../designation/designation.component';
-import { stringify } from 'querystring';
+// import { stringify } from 'querystring';
 
 
 @Component({

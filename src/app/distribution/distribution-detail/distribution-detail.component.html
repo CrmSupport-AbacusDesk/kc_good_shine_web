@@ -30,9 +30,9 @@
                 <button mat-button *ngIf="user_type != '3'" [ngClass]="{'active' :tabType== 'Target'}"
                     (click)="clearFilter(); getTarget(currentMonth_no,currentYear); tabType = 'Target'"><i
                         class="material-icons">trending_up</i>Target</button>
-                <button mat-button *ngIf="user_type != '3'" [ngClass]="{'active' :tabType== 'Ledger'}"
+                <!-- <button mat-button *ngIf="user_type != '3'" [ngClass]="{'active' :tabType== 'Ledger'}"
                     (click)="clearFilter(); getLedger(); tabType = 'Ledger'"><i
-                        class="material-icons">receipt_long</i>Account Ledger</button>
+                        class="material-icons">receipt_long</i>Account Ledger</button> -->
 
                 <!-- <button mat-button *ngIf="user_type != '7'" [ngClass]="{'active' :tabType== 'Point Ledger'}"
                     (click)="clearFilter(); getPointLedger(); tabType = 'Point Ledger'"><i
