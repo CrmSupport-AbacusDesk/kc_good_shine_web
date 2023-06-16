@@ -17,7 +17,7 @@ import { BottomSheetComponent } from 'src/app/bottom-sheet/bottom-sheet.componen
   
 })
 export class SaleUserListComponent implements OnInit {
-  userType:any = 'System User';
+  userType:any = 'Sales User';
   logined_user_data:any={};
   assign_login_data: any = {};
   nodatafound:boolean=true;
