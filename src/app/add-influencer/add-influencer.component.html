@@ -40,7 +40,7 @@
                     Mobile no. already Exists.
                   </div>
                 </div>
-                <div class="col s12 m3 l3" *ngIf="params_network!='Customer'">
+                <!-- <div class="col s12 m3 l3" *ngIf="params_network!='Customer'">
                   <mat-form-field appearance="outline" [ngClass]="{'has-error' : mobile_no.invalid } ">
                     <mat-label>Paytm Mobile Number</mat-label>
 
@@ -49,7 +49,7 @@
                       onkeypress="return event.charCode>=48 && event.charCode<=57">
                   </mat-form-field>
 
-                </div>
+                </div> -->
                 <!-- <div class="col s12 m3 l3">
                   <mat-form-field appearance="outline">
                     <mat-label>Country</mat-label>
@@ -125,7 +125,7 @@
                     <p *ngIf="mobile_no.errors?.required">This field is required</p>
                   </div>
                 </div>
-                <div class="col s12 m3 l3">
+                <!-- <div class="col s12 m3 l3">
                   <mat-form-field appearance="outline" [ngClass]="{'has-error' : distributor_name.invalid } ">
                     <mat-label>Distributor Name</mat-label>
                     <input type="text" name="distributor_name" matInput placeholder="" #distributor_name="ngModel"
@@ -134,7 +134,8 @@
                   <div class="alert alert-danger" *ngIf="distributor_name.touched || f.submitted">
                     <p *ngIf="distributor_name.errors?.required">This field is required</p>
                   </div>
-                </div>
+                </div> -->
+               
 
               </div>
 
@@ -206,7 +207,8 @@
                       <div class="col s12 m6 l6">
                         <mat-form-field appearance="outline">
                           <mat-label>District</mat-label>
-                          <mat-select name="district" #district="ngModel" [(ngModel)]="data.district" required>
+                          <mat-select name="district" #district="ngModel" [(ngModel)]="data.district" required
+                          (selectionChange)="AssignSalesEmp()">
                             <mat-option disabled="">Select District</mat-option>
                             <mat-option *ngFor="let row of district_list" value="{{row.district_name}}">
                               {{row.district_name}}
@@ -217,8 +219,25 @@
                           <p *ngIf="district.errors?.required">This field is required</p>
                         </div>
                       </div>
+                      <div class="col s12 m6 l6">
+                        <mat-form-field appearance="outline">
+                          <mat-label>Select Sales Executive</mat-label>
+                          <mat-select name="sales_user_id" #sales_user_id="ngModel" [(ngModel)]="data.sales_user_id" required
+                           >
+                            <mat-option disabled="">Select Sales Executive</mat-option>
+                            <mat-option *ngFor="let row of states" value="{{row.state_name}}">
+                              {{row.state_name}}
+                            </mat-option>
+                          </mat-select>
+                        </mat-form-field>
+      
+                        <div class="alert alert-danger" *ngIf="state.touched || f.submitted">
+                          <p *ngIf="state.errors?.required">This field is required</p>
+                        </div>
+      
+                      </div>
                     </ng-container>
-                    <ng-container *ngIf="data.country=='nepal'">
+                    <!-- <ng-container *ngIf="data.country=='nepal'">
                       <div class="col s12 m6 l6">
                         <mat-form-field appearance="outline" [ngClass]="{'has-error' : state.invalid } ">
                           <mat-label>State</mat-label>
@@ -229,7 +248,7 @@
                           <p *ngIf="state.errors?.required">This field is required</p>
                         </div>
                       </div>
-                    </ng-container>
+                    </ng-container> -->
                   </div>
 
 

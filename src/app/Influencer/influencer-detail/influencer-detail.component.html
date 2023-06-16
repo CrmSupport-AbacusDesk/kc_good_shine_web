@@ -159,6 +159,13 @@
                     (Influencer_Detail.latest_login | date:'MMM d, y, h:mm:a') : '--'}}
                   </p>
                 </div>
+                <div class="block-feilds">
+                  <span>Select Sales Executive</span>
+                  <p>
+                    {{Influencer_Detail.sales_user_id && Influencer_Detail.sales_user_id != '0000-00-00 00:00:00'?
+                    (Influencer_Detail.sales_user_id | date:'MMM d, y, h:mm:a') : '--'}}
+                  </p>
+                </div>
               </ng-container>
             </div>
 
