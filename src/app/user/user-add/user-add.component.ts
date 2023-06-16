@@ -45,7 +45,7 @@ export class UserAddComponent implements OnInit {
       this.getBrand();
       this.getStateList();
       this.get_module_data();
-      this.data.user_type = 'System User';
+      this.data.user_type = 'Sales User';
       this.getReportManager('');
       this.get_sales_user_type(this.data.user_type, '');
       this.assign_login_data = this.session.getSession();
@@ -171,7 +171,7 @@ export class UserAddComponent implements OnInit {
         this.data.date_of_joining = moment(this.data.date_of_joining).format('YYYY-MM-DD');
         this.data.date_of_joining=this.data.date_of_joining;
       }
-      if (this.data.user_type == 'System User'){
+      if (this.data.user_type == 'Sales User'){
         this.data.assignModule= this.assign_module_data;
       }
       if(this.data.user_role){

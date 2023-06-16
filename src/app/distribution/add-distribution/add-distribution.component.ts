@@ -352,22 +352,26 @@ export class AddDistributionComponent implements OnInit {
             }
             header.subscribe((result => {
                 
-                if (result['statusCode'] == 200) {
+                if (result['statusCode'] == 200 && this.pageType != 'edit') {
                     console.log(this.dr_type);
                     console.log(this.params_type);
     
                     let state = this.data.state;
                     let id = this.data.id;
                     let type = this.params_type;
+                    console.log("add page")
                     // this.rout.navigate([`distribution-list/${this.dr_type}/${this.params_type}/distribution-detail/` + result['last_id']], { queryParams: { state, id, type:this.dr_type} });
                     this.rout.navigate([`distribution-list/${this.dr_type}/${this.params_type}/distribution-detail/` + result['last_id'] + '/Profile']);
                     this.toast.successToastr(result['statusMsg']);
                     this.service.dr_list();   
                 }
-                else if (result['statusCode'] == 200 && this.params_id) {
+                // this.params_id
+                else if (result['statusCode'] == 200 && this.pageType == 'edit') {
                     let state = this.data.state;
                     let id = this.data.id;
                     let type = this.params_type;
+                    console.log("edit page")
+
                     
                     this.rout.navigate([`distribution-list/${this.dr_type}/${this.params_type}/distribution-detail/` + result['last_id'] + '/Profile'], { queryParams: { state, id, type:this.dr_type} });
                     

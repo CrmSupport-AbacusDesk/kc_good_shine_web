@@ -6,14 +6,14 @@
                     routerLinkActive="active"><i class="material-icons ">dashboard</i>Dashboard </a>
             </li>
 
-            <!-- <li *ngIf="login_data.view_enquiry=='1'">
+            <li *ngIf="login_data.view_enquiry=='1'">
                 <a mat-button (click)="toggleDropdown(0);clearFilter()" routerLink="/lead-list"
                     routerLinkActive="active">
                     <i class="material-icons ">contact_support</i>Enquiry
                     <span class="nav-counter"
                         *ngIf="serve.counterArray.enquiry > 0">{{serve.counterArray.enquiry}}</span>
                 </a>
-            </li> -->
+            </li>
 
             <li class="dropdown" *ngIf="login_data.view_influencer_network=='1'">
                 <a mat-button (click)="clearFilter();serve.influencer_netwrk();  toggleDropdown(4);"
@@ -30,7 +30,7 @@
                 </ul>
             </li>
 
-            <!-- <li class="dropdown" *ngIf="login_data.view_customer_network=='1'">
+            <li class="dropdown" *ngIf="login_data.view_customer_network=='1'">
                 <a mat-button (click)="toggleDropdown(1);serve.dr_list(); clearFilter()"
                     [ngClass]="{'active':distactive }"><i class="material-icons ">people_alt</i> Customer Network</a>
                 <ul>
@@ -42,7 +42,7 @@
             </a>
         </li>
 
-                    <li *ngIf="login_data.view_channel_partner=='1'">
+                    <!-- <li *ngIf="login_data.view_channel_partner=='1'">
                         <a mat-button (click)="clearFilter();"
                             routerLink="/distribution-list/{{serve.drArray[0].type}}/{{serve.drArray[0].module_name}}"
                             routerLinkActive="active">
@@ -68,11 +68,11 @@
                             <span class="nav-counter"
                                 *ngIf="serve.drArray[2].dr_count > 0">{{serve.drArray[2].dr_count}}</span>
                         </a>
-                    </li>
+                    </li> -->
 
                 </ul>
-            </li> -->
-            <!-- <li class="dropdown" *ngIf="login_data.view_orders=='1'">
+            </li>
+            <li class="dropdown" *ngIf="login_data.view_orders=='1'">
                 <a mat-button (click)="clearFilter(); toggleDropdown(2); " [ngClass]="{'active':ordersactive}"><i
                         class="material-icons ">shopping_cart</i>Orders</a>
                 <ul>
@@ -93,7 +93,7 @@
                     </li>
                 </ul>
             </li>
-            <li class="dropdown" *ngIf="login_data.id =='1' || login_data.view_accounts=='1'">
+            <!-- <li class="dropdown" *ngIf="login_data.id =='1' || login_data.view_accounts=='1'">
                 <a mat-button (click)="toggleDropdown(6);clearFilter()" [ngClass]="{'active':accountactive}"><i
                         class="material-icons ">receipt_long</i> Accounts </a>
                 <ul>
@@ -113,8 +113,8 @@
                 </a>
             </li>
                 </ul>
-            </li>
-            <li
+            </li> -->
+            <!-- <li
                 *ngIf="login_data.view_dispatch== '1' || login_data.view_dispatch_packing== '1' || login_data.view_dispatch_billing == '1' || login_data.view_dispatch_guard== '1' ">
                 <a mat-button routerLink="/company-dispatch" (click)="toggleDropdown(0);clearFilter()"
                     routerLinkActive="active">
@@ -141,7 +141,7 @@
 
 
 
-            <!-- <li *ngIf="login_data.view_attendence=='1'">
+            <li *ngIf="login_data.view_attendence=='1'">
                 <a mat-button routerLink="/attendance" (click)="clearFilter(); toggleDropdown(0);"
                     routerLinkActive="active">
                     <i class="material-icons ">insert_invitation</i>
@@ -150,9 +150,9 @@
                         *ngIf="serve.counterArray.today_attendance > 0">{{serve.counterArray.today_attendance > 0 ?
                         serve.counterArray.today_attendance :''}}</span>
                 </a>
-            </li> -->
+            </li>
 
-            <!-- <li *ngIf="login_data.view_check_in=='1'">
+            <li *ngIf="login_data.view_check_in=='1'">
                 <a mat-button routerLink="/checkin" routerLinkActive="active"
                     (click)="clearFilter(); toggleDropdown(0);">
                     <i class="material-icons ">my_location</i>
@@ -161,9 +161,9 @@
                         *ngIf="serve.counterArray.today_checkin > 0">{{serve.counterArray.today_checkin > 0 ?
                         serve.counterArray.today_checkin : ''}}</span>
                 </a>
-            </li> -->
+            </li>
 
-            <!-- <li *ngIf="login_data.view_leaves=='1'">
+            <li *ngIf="login_data.view_leaves=='1'">
                 <a mat-button (click)="clearFilter(); toggleDropdown(0);" routerLink="/leave-list"
                     routerLinkActive="active">
                     <i class="material-icons ">exit_to_app</i>
@@ -172,9 +172,9 @@
                         *ngIf="serve.counterArray.pending_leaves > 0">{{serve.counterArray.pending_leaves > 0 ?
                         serve.counterArray.pending_leaves : ''}}</span>
                 </a>
-            </li> -->
+            </li>
 
-            <!-- <li *ngIf="login_data.view_travel_plan=='1'">
+            <li *ngIf="login_data.view_travel_plan=='1'">
                 <a mat-button routerLink="/travel-list" routerLinkActive="active"
                     (click)="clearFilter(); toggleDropdown(0);">
                     <i class="material-icons ">directions_transit</i>
@@ -183,8 +183,8 @@
                         *ngIf="serve.counterArray.pending_travel_plan > 0">{{serve.counterArray.pending_travel_plan > 0
                         ? serve.counterArray.pending_travel_plan : ''}}</span>
                 </a>
-            </li> -->
-<!-- 
+            </li>
+
             <li *ngIf="login_data.view_follow_up=='1'">
                 <a mat-button routerLink="/followup-list" routerLinkActive="active" (click)="clearFilter()">
                     <i class="material-icons ">add_ic_call</i>
@@ -193,9 +193,9 @@
                         *ngIf="serve.counterArray.pending_followup > 0">{{serve.counterArray.pending_followup > 0 ?
                         serve.counterArray.pending_followup : ''}}</span>
                 </a>
-            </li> -->
+            </li>
 
-            <!-- <li *ngIf="login_data.view_announcement=='1'">
+            <li *ngIf="login_data.view_announcement=='1'">
                 <a mat-button routerLink="/announcement-list" routerLinkActive="active" (click)="clearFilter()">
                     <i class="material-icons ">campaign</i>
                     Announcement
@@ -203,8 +203,8 @@
                         *ngIf="serve.counterArray.announcementList > 0">{{serve.counterArray.announcementList > 0 ?
                         serve.counterArray.announcementList : ''}}</span>
                 </a>
-            </li> -->
-<!-- 
+            </li>
+
             <li *ngIf="login_data.view_expense=='1'">
                 <a mat-button routerLink="/expense-list" routerLinkActive="active" (click)="clearFilter()">
                     <i class="material-icons ">account_balance_wallet</i>
@@ -213,22 +213,22 @@
                         *ngIf="serve.counterArray.pending_expense > 0">{{serve.counterArray.pending_expense > 0 ?
                         serve.counterArray.pending_expense : ''}}</span>
                 </a>
-            </li> -->
+            </li>
 
-            <!-- <li *ngIf="login_data.view_event_plan=='1'">
+            <li *ngIf="login_data.view_event_plan=='1'">
                 <a mat-button routerLink="/contractor-meet" routerLinkActive="active" (click)="clearFilter()">
                     <i class="material-icons ">groups</i>
                     Event Plan
                     <span class="nav-counter" *ngIf="serve.counterArray.event > 0">{{serve.counterArray.event > 0 ?
                         serve.counterArray.event : ''}}</span>
                 </a>
-            </li> -->
-            <!-- <li *ngIf="login_data.view_pop_gift=='1'">
+            </li>
+            <li *ngIf="login_data.view_pop_gift=='1'">
                 <a mat-button routerLink="/pop-gift-list" routerLinkActive="active" (click)="clearFilter()">
                     <i class="material-icons ">card_giftcard</i>
                     Pop & Gift
                 </a>
-            </li> -->
+            </li>
 
             <li *ngIf="login_data.view_survey=='1'">
                 <a mat-button routerLink="/survey-list" routerLinkActive="active" (click)="clearFilter()">
@@ -317,12 +317,12 @@
                 </ul> -->
             </li>
 
-            <!-- <li *ngIf="login_data.view_task=='1'">
+            <li *ngIf="login_data.view_task=='1'">
                 <a mat-button (click)="clearFilter()" routerLink="/task-list" routerLinkActive="active">
                     <i class="material-icons">assignment_add</i>
                     Task
                 </a>
-            </li> -->
+            </li>
 
             <li *ngIf="login_data.view_support=='1'">
                 <a (click)="clearFilter()" mat-button routerLink="/support" routerLinkActive="active">
@@ -331,7 +331,7 @@
                 </a>
             </li>
 
-            <!-- <li class="dropdown" *ngIf="login_data.view_target=='1' ">
+            <li class="dropdown" *ngIf="login_data.view_target=='1' ">
 
                 <a mat-button (click)=toggleDropdown(9) [ngClass]="{'active':targetactive}"><i
                         class="material-icons ">trending_up</i> Target </a>
@@ -356,7 +356,7 @@
                         </li>
 
                 </ul>
-            </li> -->
+            </li>
 
             <li class="dropdown" *ngIf="login_data.view_master=='1'">
                 <a mat-button (click)=toggleDropdown(3) [ngClass]="{'active':masteractive}"><i
@@ -374,11 +374,11 @@
                             Sub Category
                         </a>
                     </li>
-                    <!-- <li *ngIf="login_data.view_leave_master=='1'">
+                    <li *ngIf="login_data.view_leave_master=='1'">
                         <a mat-button routerLink="/leave-master-list" routerLinkActive="active" (click)="clearFilter()">
                             Leave Master
                         </a>
-                    </li> -->
+                    </li>
                     <li *ngIf="login_data.view_products=='1' ">
                         <a mat-button routerLink="/product-list" routerLinkActive="active" (click)="clearFilter()">
                             Products
@@ -404,11 +404,11 @@
                                 serve.counterArray.active_user : ''}}</span>
                         </a>
                     </li>
-                    <!-- <li *ngIf="login_data.view_customer_category=='1' ">
+                    <li *ngIf="login_data.view_customer_category=='1' ">
                         <a mat-button routerLink="/customer-category" routerLinkActive="active" (click)="clearFilter()">
                             Customer Category
                         </a>
-                    </li> -->
+                    </li>
                     <!-- <li *ngIf="login_data.view_infulencer_category=='1' ">
                         <a mat-button routerLink="/influencer-user-list" routerLinkActive="active"
                             (click)="clearFilter()">
@@ -420,11 +420,11 @@
                             Point Category
                         </a>
                     </li>
-                    <!-- <li *ngIf="login_data.view_holiday=='1' ">
+                    <li *ngIf="login_data.view_holiday=='1' ">
                         <a mat-button routerLink="/holiday-list" routerLinkActive="active" (click)="clearFilter()">
                             Holiday
                         </a>
-                    </li> -->
+                    </li>
                     <li *ngIf="login_data.view_gallery=='1' ">
                         <a mat-button routerLink="/banner-list" routerLinkActive="active" (click)="clearFilter()">
                             Gallery
@@ -435,11 +435,11 @@
                             Referral Point Master
                         </a>
                     </li>
-                    <!-- <li *ngIf="login_data.view_allowance_master=='1' ">
+                    <li *ngIf="login_data.view_allowance_master=='1' ">
                         <a mat-button routerLink="/allowances" routerLinkActive="active" (click)="clearFilter()">
                             Allowance Master
                         </a>
-                    </li> -->
+                    </li>
 
                 </ul>
             </li>
