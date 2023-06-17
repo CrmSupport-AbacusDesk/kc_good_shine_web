@@ -28,7 +28,7 @@ export class UserdesignationComponent implements OnInit {
   sr_no = 0;
   datanotfound: boolean = false;
   downurl: any = '';
-  userType: any = 'System User';
+  userType: any = 'Sales User';
 
   constructor(
     public rout: Router,

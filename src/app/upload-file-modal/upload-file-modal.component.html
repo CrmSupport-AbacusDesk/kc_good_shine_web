@@ -276,6 +276,100 @@
         </div>
     </div>
 </div>
+
+<div class="edit-modal" *ngIf="come_from == 'distributor_target_achievement'">
+    <p class="heading">{{savingFlag == true ? 'Please Wait ...': (modal_type=='add new'?'Upload Distributor Target':modal_type=='update'?'Update Distributor Target':null)}}</p>
+    <div mat-dialog-content>
+        <div class="dialog-content">
+            <div class="cs-form pl16 pr16" *ngIf="modal_type == 'update'">
+                <div class="row mb0">
+                    <div class="col s12 m6 l6">
+                        <mat-form-field appearance="outline">
+                            <mat-label>Month*</mat-label>
+                            <mat-select name="month" #month="ngModel" [(ngModel)]="filter.month">
+                                <mat-option value="01">January</mat-option>
+                                <mat-option value="02">February</mat-option>
+                                <mat-option value="03">March</mat-option>
+                                <mat-option value="04">April</mat-option>
+                                <mat-option value="05">May</mat-option>
+                                <mat-option value="06">June</mat-option>
+                                <mat-option value="07">July</mat-option>
+                                <mat-option value="08">August</mat-option>
+                                <mat-option value="09">September</mat-option>
+                                <mat-option value="10">October</mat-option>
+                                <mat-option value="11">November</mat-option>
+                                <mat-option value="12">December</mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </div>
+
+                    <div class="col s12 m6 l6">
+                        <mat-form-field appearance="outline">
+                            <mat-label>Year*</mat-label>
+                            <input matInput placeholder="Type Here ..." minlength="4" maxlength="4" min="4" name="year"
+                                #year="ngModel" onkeypress="return event.charCode>=48 && event.charCode<=57"
+                                [(ngModel)]="filter.year">
+                        </mat-form-field>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="excel-box">
+                <label>
+                    <form name="couponForm" #f="ngForm" novalidate autocomplete="off">
+                        <input type="file" (change)="onUploadChange($event)" name="fileupload"
+                            accept=".csv,application/vnd.ms-excel,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+                            style="display: none;">
+                    </form>
+                    <i class="material-icons">
+                        cloud_upload
+                    </i>
+                    <p *ngIf="excel_name == ''">Click Here To Upload Distributor Target Excel(In csv format)</p>
+                    <p *ngIf="excel_name != ''">{{excel_name}}</p>
+                </label>
+                <a (click)="targetSample2()"><i class="material-icons">download</i>Distributor target And Achievement {{modal_type}}
+                    sample file</a> 
+            </div>
+
+            <div *ngIf="uploadError">
+                <p mat-dialog-title>Failed To Upload: <span class="red-clr">Failed:
+                        {{uploadErrorMsgCount.failed}}</span> | <span class="green-clr">Success:
+                        {{uploadErrorMsgCount.Success}}</span></p>
+                <div class="cs-table left-right-10">
+                    <div class="collapse-body pt0">
+                        <div class="cs-form">
+                            <div class="cs-table">
+                                <div class="table-container">
+                                    <div class="table-content">
+                                        <table>
+                                            <tr>
+                                                <td class=" padding0">
+                                                    <table>
+                                                        <tr *ngFor="let row of uploadErrorMsg">
+                                                            <td class="border-top border-bottom">{{row}}</td>
+                                                        </tr>
+                                                    </table>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div mat-dialog-actions>
+            <button mat-stroked-button color="warn" [mat-dialog-close]="false">Close</button>
+            <button mat-raised-button color="accent" [disabled]="excel_loader == true"
+                [ngClass]="{'loading': excel_loader == true}" (click)="upload_distributor_data_excel2()"
+                accept=".csv,application/vnd.ms-excel,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet">Upload</button>
+        </div>
+    </div>
+</div>
+
 <div class="edit-modal" *ngIf="come_from == 'secondary_target'">
     <p class="heading">{{savingFlag == true ? 'Please Wait ...': (modal_type=='secondary sale'?'Upload Secondary
         Target':modal_type=='secondary sale Update'?'Update Secondary Target':'')}}</p>
@@ -950,8 +1044,8 @@
                                                 <tr>
                                                     <td class=" padding0">
                                                         <table>
-                                                            <tr *ngFor="let row of uploadErrorMsg">
-                                                                <td class="border-top border-bottom">{{row}}</td>
+                                                            <tr *ngFor="let row of uploadErrorMsg; let i=index">
+                                                                <td class="border-top border-bottom">{{i+1}}. {{row}}</td>
                                                             </tr>
                                                         </table>
                                                     </td>
@@ -1061,8 +1155,8 @@
                                                 <tr>
                                                     <td class=" padding0">
                                                         <table>
-                                                            <tr *ngFor="let row of uploadErrorMsg">
-                                                                <td class="border-top border-bottom">{{row}}</td>
+                                                            <tr *ngFor="let row of uploadErrorMsg; let i=index">
+                                                                <td class="border-top border-bottom">{{i+1}}. {{row}}</td>
                                                             </tr>
                                                         </table>
                                                     </td>

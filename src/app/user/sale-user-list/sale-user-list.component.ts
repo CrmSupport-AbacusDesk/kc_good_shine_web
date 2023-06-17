@@ -29,6 +29,7 @@ export class SaleUserListComponent implements OnInit {
   system_count:any;
   filter: any = {}
   loader:boolean = false;
+  downloadingLoader:boolean=false;
   Status: boolean = true;
   datanotfound = false;
   dialog: any;
@@ -160,12 +161,16 @@ export class SaleUserListComponent implements OnInit {
   Filename:any = ''
   getUserExcel(user_type) {
     this.loader = true;
+    this.downloadingLoader=true;
     this.service.post_rqst({ "active_tab":user_type, "filter": this.filter }, "Excel/user_list_for_export").subscribe((result) => {
       if(result['msg'] == true){
+        this.downloadingLoader=false;
         window.open(this.downurl + result['filename'])
         this.getUserList(user_type);
+      }else{
+        this.downloadingLoader=false;
       }
-    });
+    },()=>{this.downloadingLoader=false});
   }
   
   

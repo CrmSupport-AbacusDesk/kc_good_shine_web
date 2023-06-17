@@ -189,11 +189,14 @@
     </div>
     <div>
     </div>
+   
     <div class="fab-btns"
         *ngIf="assign_login_data2.export_distributor_target=='1' || assign_login_data2.import_distributor_target=='1'">
-        <button mat-fab color="accent" class="pulse" [matMenuTriggerFor]="menu">
+        <button class="pulse excel" mat-fab color="accent" [disabled]="loader" [ngClass]="{'loading':loader}" [matMenuTriggerFor]="menu">
+            <ng-container *ngIf="!loader">
             <i class="material-icons">apps</i>
-            Action
+            Action</ng-container>
+            <ng-container *ngIf="loader">Downloading</ng-container>
         </button>
         <mat-menu #menu="matMenu">
             <button mat-menu-item (click)="exportAsXLSX();"

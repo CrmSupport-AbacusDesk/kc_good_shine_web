@@ -179,14 +179,16 @@
     </div>
 
   </div>
+  
 
 
   <div class="fab-btns"
     *ngIf="logined_user_data.export_category_master=='1' || logined_user_data.add_category_master=='1' || logined_user_data.import_category_master=='1'">
-    <button class="pulse excel" mat-fab color="primary" [ngClass]="{'pulse': fabBtnValue=='add'}"
-      [matMenuTriggerFor]="menu">
+    <button class="pulse excel" mat-fab color="primary" [disabled]="loader" [ngClass]="{'pulse': fabBtnValue=='add','loading':loader}" [matMenuTriggerFor]="menu">
+      <ng-container *ngIf="!loader">
       <i class="material-icons">apps</i>
-      Action
+      Action</ng-container>
+      <ng-container *ngIf="loader">Downloading</ng-container>
     </button>
     <mat-menu #menu="matMenu">
       <button mat-menu-item (click)="download_excl();"

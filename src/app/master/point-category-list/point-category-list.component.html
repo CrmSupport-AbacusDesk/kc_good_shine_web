@@ -163,17 +163,16 @@
 
 
   <div class="fab-btns" *ngIf=" logined_user_data.export_point_master=='1' || logined_user_data.add_point_master=='1'">
-    <button class="pulse excel" mat-fab color="primary" [ngClass]="{'pulse': fabBtnValue=='add'}"
-      [matMenuTriggerFor]="menu">
-      <i class="material-icons">apps</i>
-      Action
+    <button class="pulse excel" mat-fab color="primary" [disabled]="downloadingLoader" [ngClass]="{'pulse': fabBtnValue=='add','loading':downloadingLoader}" [matMenuTriggerFor]="menu">
+      <ng-container *ngIf="!downloadingLoader"> <i class="material-icons">apps</i>
+      Action</ng-container>
+      <ng-container *ngIf="downloadingLoader">Downloading</ng-container>
     </button>
   </div>
   <mat-menu #menu="matMenu">
-    <button mat-menu-item (click)="lastBtnValue('excel'); getpointCategoryExcel('')"
+    <button mat-menu-item (click)="lastBtnValue('excel'); getpointCategoryExcel('')"  
       *ngIf="pointCategories_data.length > 0 &&  logined_user_data.export_point_master=='1' ">
-      <mat-icon>download</mat-icon>
-      <span>Download excel</span>
+      <mat-icon>download</mat-icon><span>Download excel</span>
     </button>
 
     <button mat-menu-item routerLink="point-add" *ngIf="logined_user_data.add_point_master=='1'">
@@ -181,3 +180,19 @@
       <span>Add New</span>
     </button>
   </mat-menu>
+
+  <!-- <div class="fab-btns">
+    <button mat-fab class="excel pulse" [disabled]="downloadingLoader" [ngClass]="{'loading':downloadingLoader}"
+      (click)="exportAsXLSX('todayCheckinList',1)" *ngIf="show_today && assign_login_data2.export_checkin=='1'">
+      <ng-container *ngIf="!downloadingLoader"><img src="assets/img/excel.svg">
+        Download Excel</ng-container>
+      <ng-container *ngIf="downloadingLoader">Downloading</ng-container>
+    </button>
+
+    <button mat-fab class="excel pulse" (click)="exportAsXLSX('checkinAll',2)"
+      *ngIf="!show_today && assign_login_data2.export_checkin=='1'">
+      <ng-container *ngIf="!downloadingLoader"><img src="assets/img/excel.svg">
+        Download Excel</ng-container>
+      <ng-container *ngIf="downloadingLoader">Downloading</ng-container>
+    </button>
+  </div> -->

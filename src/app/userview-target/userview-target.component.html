@@ -298,9 +298,10 @@
   <div class="fab-btns">
     <button class="pulse excel"
       *ngIf="assign_login_data2.export_employee_target=='1' || assign_login_data2.import_employee_target=='1'" mat-fab
-      color="primary" [ngClass]="{'pulse': fabBtnValue=='add'}" [matMenuTriggerFor]="menu">
-      <i class="material-icons">apps</i>
-      Action
+      color="primary" [disabled]="loader" [ngClass]="{'pulse': fabBtnValue=='add','loading':loader}" [matMenuTriggerFor]="menu">
+     <ng-container *ngIf="!loader"> <i class="material-icons">apps</i>
+      Action</ng-container>
+      <ng-container *ngIf="loader">Downloading</ng-container>
     </button>
     <mat-menu #menu="matMenu">
 

@@ -288,13 +288,16 @@ export class ProductListComponent implements OnInit {
   }
 
   downloadExcel() {
-    this.service.post_rqst({ 'filter': this.filter_data }, "Excel/product_list_for_excel").subscribe((result => {
+    this.loader=true;
+    this.service.post_rqst({ 'filter': this.filter_data }, "Excel/product_list_for_excel").subscribe(result => {
       if (result['msg'] == true) {
+        this.loader=false;
         window.open(this.downurl + result['filename'])
         this.getProductList('');
       } else {
+        this.loader=false;
       }
-    }));
+    },()=>{this.loader=false;});
   }
 
 }

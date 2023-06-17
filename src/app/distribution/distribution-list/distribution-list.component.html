@@ -1,5 +1,4 @@
 <div class="main-container">
-  <app-loader *ngIf="excelLoader"></app-loader>
   <div class="tools-container">
     <h2>{{type}}</h2>
     <div class="left-auto df flex-gap-10">
@@ -422,10 +421,12 @@
 
   <div class="fab-btns"
     *ngIf="(assign_login_data2.add_customer_network=='1' || ((type_id==1 && assign_login_data2.add_channel_partner=='1') || (type_id==3 && assign_login_data2.add_dealer=='1') || (type_id==7 && assign_login_data2.add_direct_dealers=='1') ) )          || ( assign_login_data2.import_customer_network=='1' || (type_id==1 && assign_login_data2.import_channel_partner=='1') || (type_id==3 && assign_login_data2.import_dealer=='1') || (type_id==7 && assign_login_data2.import_direct_dealers=='1'))    || ((assign_login_data2.export_customer_network=='1' || (type_id==1 && assign_login_data2.export_channel_partner=='1') || (type_id==3 && assign_login_data2.export_dealer=='1') || (type_id==7 && assign_login_data2.export_direct_dealers=='1')) )  ">
-    <button class="pulse excel" mat-fab color="primary" [ngClass]="{'pulse': fabBtnValue=='add'}"
+    <button class="pulse excel" mat-fab color="primary"  [disabled]="downloadingLoader" [ngClass]="{'pulse': fabBtnValue=='add','loading':downloadingLoader}" 
       [matMenuTriggerFor]="menu">
+      <ng-container *ngIf="!downloadingLoader">
       <i class="material-icons">apps</i>
-      Action
+      Action</ng-container>
+      <ng-container *ngIf="downloadingLoader">Downloading</ng-container>
     </button>
     <mat-menu #menu="matMenu">
       <button mat-menu-item

@@ -206,7 +206,7 @@
                         <div class="visit-time">
                           <div class="visit-hours">
                             <span class="green-clr">Check-in</span>
-                            <p *ngIf="row.visit_start != '0000-00-00 00:00:00' ">{{row.visit_start }}</p>
+                            <p *ngIf="row.visit_start != '0000-00-00 00:00:00' ">{{row.visit_start | date:'dd MMM yyyy hh:mm'}}</p>
                             <p *ngIf="row.visit_start == '0000-00-00 00:00:00' ">---</p>
                           </div>
                           <div class="visit-hours">
@@ -232,9 +232,19 @@
                           <span>&nbsp;</span>
                           Followup
                         </div>
-                        <div class="types" [ngClass]="{'active': row.followup_flag > 0}">
+                        <!-- <div class="types" [ngClass]="{'active': row.followup_flag > 0}">
                           <span>&nbsp;</span>
                           Photo upload
+                        </div> -->
+                        <div class="types" [ngClass]="{'active': row.doc_flag!=0 }">
+                          <span>&nbsp;</span>
+                          <a style="cursor: pointer;text-decoration: underline;" *ngIf="row.doc_flag!=0"
+                            (click)="opendoc(row.Doc)">
+                            Photo upload
+                          </a>
+                          <a *ngIf="row.doc_flag==0">
+                            Photo upload
+                          </a>
                         </div>
                       </div>
                     </div>

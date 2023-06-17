@@ -125,9 +125,10 @@
       <i class="material-icons">update</i>
       Update
     </button>
-    <button class="pulse excel" mat-fab color="primary" (click)="getLeaveMasterExcel()"  *ngIf="leaveMasterList.length > 0 && logined_user_data.export_leave_master=='1'">
-			<mat-icon>download</mat-icon>
-			Download in excel
+    <button class="pulse excel" mat-fab color="primary" (click)="getLeaveMasterExcel()"  *ngIf="leaveMasterList.length > 0 && logined_user_data.export_leave_master=='1'" [disabled]="loader" [ngClass]="{'loading':loader}">
+			<ng-container *ngIf="!loader"><mat-icon>download</mat-icon>
+			Download in excel</ng-container>
+      <ng-container *ngIf="loader">Downloading</ng-container>
 		</button>
   </div>
 

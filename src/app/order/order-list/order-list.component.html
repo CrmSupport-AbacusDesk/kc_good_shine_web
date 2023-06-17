@@ -38,8 +38,8 @@
       </div>
       <div class="mat-tabbar">
         <button mat-button [ngClass]="active_tab == 'All' ? 'active' : ''"
-        (click)="active_tab='All';orderList('',OrderMonth,OrderYear);"><i
-          class="material-icons">done_all</i>All ({{count.all}}) </button>
+          (click)="active_tab='All';orderList('',OrderMonth,OrderYear);"><i class="material-icons">done_all</i>All
+          ({{count.all}}) </button>
         <button mat-button [ngClass]="active_tab == 'Pending' ? 'active' : ''"
           (click)="active_tab = 'Pending';orderList('',OrderMonth,OrderYear);"><i
             class="material-icons">pending_actions</i>Pending ({{count.Pending}})</button>
@@ -62,11 +62,11 @@
           (click)="active_tab = 'Dispatch';orderList('',OrderMonth,OrderYear);"><i
             class="material-icons">local_shipping</i>Dispatched
           ({{count.Dispatch}})</button> -->
-          <button mat-button [ngClass]="active_tab == 'readyToDispatch' ? 'active' : ''"
+        <button mat-button [ngClass]="active_tab == 'readyToDispatch' ? 'active' : ''"
           (click)="active_tab = 'readyToDispatch';orderList('',OrderMonth,OrderYear);"><i
             class="material-icons">local_shipping</i>Dispatch Planned
           ({{count.readyToDispatch}})</button>
-        </div>
+      </div>
     </div>
   </div>
 
@@ -264,13 +264,14 @@
         <app-not-result-found></app-not-result-found>
       </ng-container>
     </div>
-
   </div>
   <div class="fab-btns pulse"
     *ngIf="(login_data.export_primary_order=='1' || login_data.export_order=='1') || (login_data.add_order=='1' || login_data.add_primary_order=='1') ">
-    <button class="excel pulse " mat-fab color="primary" [matMenuTriggerFor]="menu">
-      <i class="material-icons">apps</i>
-      Action
+    <button class="excel pulse " mat-fab color="primary" [matMenuTriggerFor]="menu" [disabled]="downloadingLoader"
+      [ngClass]="{'loading':downloadingLoader}">
+      <ng-container *ngIf="!downloadingLoader"><i class="material-icons">apps</i>
+        Action</ng-container>
+      <ng-container *ngIf="downloadingLoader">Downloading</ng-container>
     </button>
     <mat-menu #menu="matMenu">
       <button mat-menu-item (click)="lastBtnValue('excel'); exportAsXLSX(OrderMonth, OrderYear)"

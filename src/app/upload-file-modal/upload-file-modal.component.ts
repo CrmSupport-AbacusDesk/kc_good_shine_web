@@ -42,7 +42,7 @@ export class UploadFileModalComponent implements OnInit {
   segmentList: any;
   filter: any = {};
   savingFlag: boolean = false;
-  view_tab:any='customer_network_visit';
+  view_tab: any = 'customer_network_visit';
 
   constructor(@Inject(MAT_DIALOG_DATA) public data, public toast: ToastrManager, public serve: DatabaseService, public ActivatedRoute: ActivatedRoute, public dialog: DialogComponent, public dialogRef: MatDialogRef<UploadFileModalComponent>) {
     this.uploadurl = serve.uploadUrl + '';
@@ -346,7 +346,7 @@ export class UploadFileModalComponent implements OnInit {
         return;
       } else {
         console.log("hello console new", d['statusMsg']);
-        console.log("hello console error",d['response']);
+        console.log("hello console error", d['response']);
         this.excel_loader = false;
         this.uploadError = true;
         this.uploadErrorMsg = d['statusMsg'];
@@ -450,7 +450,6 @@ export class UploadFileModalComponent implements OnInit {
 
 
   targetSample() {
-
     if (this.modal_type == 'add new' && this.come_from == 'distributor_target') {
       this.serve.post_rqst({ 'type': this.network_type }, "Target/generateExcelForDistributorTargetUpload").subscribe((result) => {
         if (result['statusCode'] == 200) {
@@ -487,10 +486,23 @@ export class UploadFileModalComponent implements OnInit {
         }
       })
     }
+  }
 
-
+  targetSample2() {
+    if (this.modal_type == 'add new' && this.come_from == 'distributor_target_achievement') {
+      this.serve.post_rqst({ 'type': this.network_type }, "Target/generateExcelForDisTargetList").subscribe((result) => {
+        if (result['statusCode'] == 200) {
+          document.location.replace(this.uploadurl + 'sample_file/DistributorTargetListUpload.csv');
+        }
+        else {
+          this.toast.errorToastr(result['statusMsg']);
+        }
+      })
+    }
 
   }
+
+
   upload_distributor_data_excel() {
     this.dialogRef.disableClose = true;
     this.formData.append('category', this.file, this.file.name);
@@ -532,6 +544,46 @@ export class UploadFileModalComponent implements OnInit {
       this.excel_loader = false;
     });
   }
+
+
+  upload_distributor_data_excel2() {
+    this.dialogRef.disableClose = true;
+    this.formData.append('category', this.file, this.file.name);
+    this.excel_loader = true;
+
+    let header
+
+    if (this.modal_type == 'add new') {
+      header = this.serve.FileData(this.formData, 'Target/importTargetAchievementList')
+    }
+
+    header.subscribe(result => {
+      this.dialogRef.disableClose = false;
+      this.formData = new FormData();
+
+      if (result['statusCode'] == 200) {
+        this.toast.successToastr(result['statusMsg']);
+        this.excel_loader = false;
+        this.dialogRef.close();
+      } 
+
+      else {
+        // this.toast.errorToastr(d['statusMsg']);
+        this.excel_loader = false;
+        this.uploadError = true;
+        this.uploadErrorMsg = result['statusMsg'];
+        this.uploadErrorMsgCount = result['response'];
+        this.excel_loader = false;
+
+      }
+
+    }, err => {
+      this.toast.errorToastr('Something went wrong');
+      this.excel_loader = false;
+    });
+  }
+
+
 
   secondaryTargetSample() {
     this.excel_loader = true;
@@ -909,11 +961,26 @@ export class UploadFileModalComponent implements OnInit {
       .subscribe(d => {
         this.dialogRef.disableClose = false;
         this.formData = new FormData();
-        if (d['statusCode'] == 200) {
+
+        if (d['statusCode'] == 200 && !d['exist'].length) {
+          console.log("helo world 2")
+
           this.dialog.success("Excel Uploaded", d['statusMsg']);
           this.dialogRef.close();
           setTimeout(() => {
             this.excel_loader = false;
+          }, 700);
+          return;
+        } else if (d['statusCode'] == 200 && d['exist'].length) {
+          console.log("helo world")
+          this.dialog.success("Excel Uploaded", d['statusMsg']);
+          this.uploadError = true;
+          this.uploadErrorMsg = d['exist'];
+          this.uploadErrorMsgCount = d['response'];
+          setTimeout(() => {
+            this.excel_loader = false;
+
+
           }, 700);
           return;
         }
@@ -943,11 +1010,24 @@ export class UploadFileModalComponent implements OnInit {
       .subscribe(d => {
         this.dialogRef.disableClose = false;
         this.formData = new FormData();
-        if (d['statusCode'] == 200) {
+        if (d['statusCode'] == 200 && !d['exist'].length) {
           this.dialog.success("Excel Uploaded", d['statusMsg']);
           this.dialogRef.close();
           setTimeout(() => {
             this.excel_loader = false;
+          }, 700);
+          return;
+        }
+        else if (d['statusCode'] == 200 && d['exist'].length) {
+          console.log("helo world")
+          this.dialog.success("Excel Uploaded", d['statusMsg']);
+          this.uploadError = true;
+          this.uploadErrorMsg = d['exist'];
+          this.uploadErrorMsgCount = d['response'];
+          setTimeout(() => {
+            this.excel_loader = false;
+
+
           }, 700);
           return;
         }
@@ -1003,71 +1083,69 @@ export class UploadFileModalComponent implements OnInit {
 
   }
 
-  upload_pendingbills_excel()
-  {
+  upload_pendingbills_excel() {
     this.dialogRef.disableClose = true;
-    this.formData.append('category', this.file,this.file.name);
+    this.formData.append('category', this.file, this.file.name);
 
-    this.excel_loader= true;
+    this.excel_loader = true;
     this.serve.FileData(this.formData, 'Account/bulkUploadPendingBillPaymentsCsv').subscribe(d => {
       this.dialogRef.disableClose = false;
       this.formData = new FormData();
-      if(d['statusCode'] == 200  && !d['response'].length){
+      if (d['statusCode'] == 200 && !d['response'].length) {
         this.toast.successToastr(d['statusMsg']);
         this.dialogRef.close();
-        this.excel_loader=false;
+        this.excel_loader = false;
         this.serve.dr_list();
       }
-      else { 
+      else {
         console.log(d);
-        
 
-        
+
+
         this.dialog.error(d['statusMsg']);
-        setTimeout (() => {
-          this.excel_loader='';
+        setTimeout(() => {
+          this.excel_loader = '';
         }, 700);
-   
-        
+
+
       }
       if (d['response'].length) {
-        this.uploadError=true; 
+        this.uploadError = true;
         this.uploadErrorMsg = d['response'];
         // this.uploadErrorMsgCount = d['response'];
-        this.excel_loader=false;
+        this.excel_loader = false;
       }
-    },err => {});
+    }, err => { });
   }
 
-  upload_ledger_excel()
-  {
+  upload_ledger_excel() {
     this.dialogRef.disableClose = true;
-    this.formData.append('category', this.file,this.file.name)
+    this.formData.append('category', this.file, this.file.name)
 
-    this.excel_loader= true;
+    this.excel_loader = true;
     this.serve.FileData(this.formData, 'Account/bulkUploadledgerCsv').subscribe(d => {
       this.dialogRef.disableClose = false;
       this.formData = new FormData();
-      if(d['statusCode'] == 200 && !d['response'].length){
+      if (d['statusCode'] == 200 && !d['response'].length) {
         this.toast.successToastr(d['statusMsg']);
         this.dialogRef.close();
-        this.excel_loader=false;
+        this.excel_loader = false;
         this.serve.dr_list();
       }
-      else { 
+      else {
         console.log(d);
         this.dialog.error(d['statusMsg']);
-        setTimeout (() => {
-          this.excel_loader='';
-        }, 700);      
+        setTimeout(() => {
+          this.excel_loader = '';
+        }, 700);
       }
       if (d['response'].length) {
-        this.uploadError=true; 
+        this.uploadError = true;
         this.uploadErrorMsg = d['response'];
         // this.uploadErrorMsgCount = d['response'];
-        this.excel_loader=false;
+        this.excel_loader = false;
       }
-    },err => {});
+    }, err => { });
   }
 
   upload_invoice_excel() {
@@ -1081,24 +1159,24 @@ export class UploadFileModalComponent implements OnInit {
 
         this.dialogRef.disableClose = false;
         this.formData = new FormData();
-        if(d['statusCode'] == 200 && !d['response'].length){
+        if (d['statusCode'] == 200 && !d['response'].length) {
           this.toast.successToastr(d['statusMsg']);
           this.dialogRef.close();
-          this.excel_loader=false;
+          this.excel_loader = false;
           this.serve.dr_list();
         }
-        else { 
+        else {
           console.log(d);
           this.dialog.error(d['statusMsg']);
-          setTimeout (() => {
-            this.excel_loader='';
-          }, 700);      
+          setTimeout(() => {
+            this.excel_loader = '';
+          }, 700);
         }
         if (d['response'].length) {
-          this.uploadError=true; 
+          this.uploadError = true;
           this.uploadErrorMsg = d['response'];
           // this.uploadErrorMsgCount = d['response'];
-          this.excel_loader=false;
+          this.excel_loader = false;
         }
 
       }, err => { });

@@ -243,10 +243,11 @@
 
   <div class="fab-btns"
     *ngIf="logined_user_data.export_products_master=='1' || logined_user_data.add_products_master=='1' || logined_user_data.import_products_master=='1' ">
-    <button class="pulse excel" mat-fab color="primary" [ngClass]="{'pulse': fabBtnValue=='add'}"
-      [matMenuTriggerFor]="menu">
+    <button class="pulse excel" mat-fab color="primary" [disabled]="loader" [ngClass]="{'pulse': fabBtnValue=='add','loading':loader}" 
+      [matMenuTriggerFor]="menu"><ng-container *ngIf="!loader">
       <i class="material-icons">apps</i>
-      Action
+      Action</ng-container>
+      <ng-container *ngIf="loader">Downloading</ng-container>
     </button>
   </div>
   <mat-menu #menu="matMenu">

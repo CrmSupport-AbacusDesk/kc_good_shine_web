@@ -63,12 +63,12 @@
             <ng-container *ngIf="!loader">
               <tr *ngFor="let row of surveyResult; let i = index">
 
-                <td class="w60">{{start+i+1}}</td>
-                <td class="w150">{{row.date_created | date:'dd MMM yyyy'}}</td>
-                <td class="w200">{{row.created_by_name}}</td>
-                <td class="w200">{{row.type}}</td>
+                <td class="w60 text-center">{{start+i+1}}</td>
+                <td class="w150 text-center">{{row.date_created | date:'dd MMM yyyy'}}</td>
+                <td class="w200 text-center">{{row.created_by_name}}</td>
+                <td class="w200 text-center">{{row.type}}</td>
                 <!-- <ng-container *ngIf="loader"> -->
-                <td class="w200" *ngFor="let newans of row.answer">{{newans}}</td>
+                <td class="w200 text-center" *ngFor="let newans of row.answer">{{newans}}</td>
                <!-- </ng-container> -->
 
               </tr>

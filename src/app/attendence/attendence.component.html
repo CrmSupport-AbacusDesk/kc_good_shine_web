@@ -406,17 +406,21 @@
 
     <div class="fab-btns">
         <button mat-fab class="excel pulse"
-            *ngIf="tabType== 'Today' && attendancelist.length > 0 && assign_login_data2.export_attendence=='1'"
+            *ngIf="tabType== 'Today' && attendancelist.length > 0 && assign_login_data2.export_attendence=='1'"  [disabled]="loader" [ngClass]="{'loading':loader}"
             (click)="downloadExcel('getAttendanceToday',1);">
-            <img src="assets/img/excel.svg">
-            Download Excel
+            <ng-container *ngIf="!loader">
+                <img src="assets/img/excel.svg">
+                Download Excel</ng-container>
+              <ng-container *ngIf="loader">Downloading</ng-container>
         </button>
 
         <button mat-fab class="excel pulse"
-            *ngIf="tabType== 'Month' && attendancelist.length > 0 && assign_login_data2.export_attendence=='1'"
+            *ngIf="tabType== 'Month' && attendancelist.length > 0 && assign_login_data2.export_attendence=='1'" [disabled]="loader" [ngClass]="{'loading':loader}"
             (click)="downloadExcel('getAttendance',2);">
-            <img src="assets/img/excel.svg">
-            Download Excel
+            <ng-container *ngIf="!loader">
+                <img src="assets/img/excel.svg">
+                Download Excel</ng-container>
+              <ng-container *ngIf="loader">Downloading</ng-container>
         </button>
     </div>
 </div>

@@ -307,9 +307,10 @@
         </div>
         
         <div class="fab-btns" *ngIf="view_add">
-            <button *ngIf="assign_login_data2.export_pop_gift=='1'" mat-fab class="excel"  (click)="lastBtnValue('excel');  transactionType== 'Pop Gift' ?  downloadExcel() : downloadExcel1()"  [ngClass]="{'pulse': fabBtnValue=='excel'}">
-                <img src="assets/img/excel.svg">
-                Download Excel
+            <button *ngIf="assign_login_data2.export_pop_gift=='1'" mat-fab class="excel"  (click)="lastBtnValue('excel');  transactionType== 'Pop Gift' ?  downloadExcel() : downloadExcel1()" [disabled]="loader"  [ngClass]="{'pulse': fabBtnValue=='excel' ,'loading':loader}">
+               <ng-container *ngIf="!loader"> <img src="assets/img/excel.svg">
+                Download Excel</ng-container>
+                <ng-container *ngIf="loader">Downloading</ng-container>
             </button>
             <button color="primary" *ngIf="assign_login_data2.edit_pop_gift=='1'" (click)="lastBtnValue('gift'); popModal('issue_pop','','user_id')" mat-fab [ngClass]="{'pulse': fabBtnValue=='gift'}">
                 <i class="material-icons mr10">card_giftcard</i>
