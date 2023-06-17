@@ -182,8 +182,10 @@
 
 </div>
 <div class="fab-btns">
-  <button  mat-fab class="excel pulse" (click)="exportAsXLSX()" [ngClass]="{'pulse': fabBtnValue=='excel'}" *ngIf="followup_list.length && assign_login_data2.export_follow_up=='1'">
+  <button  mat-fab class="excel pulse" (click)="exportAsXLSX()" [disabled]="loader" [ngClass]="{'pulse': fabBtnValue=='excel','loading':loader}" *ngIf="followup_list.length && assign_login_data2.export_follow_up=='1'">
+    <ng-container *ngIf="!loader">
     <img src="assets/img/excel.svg">
-    Download Excel
+    Download Excel</ng-container>
+    <ng-container *ngIf="loader">Downloading</ng-container>
   </button>
 </div>

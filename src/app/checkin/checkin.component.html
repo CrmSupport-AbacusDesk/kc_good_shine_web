@@ -371,15 +371,19 @@
   </div>
   <div class="fab-btns">
     <button mat-fab class="excel pulse" (click)="exportAsXLSX('todayCheckinList',1)"
-      *ngIf="show_today && assign_login_data2.export_checkin=='1'">
-      <img src="assets/img/excel.svg">
-      Download Excel
+      *ngIf="show_today && assign_login_data2.export_checkin=='1'" [disabled]="loader" [ngClass]="{'loading':loader}">
+      <ng-container *ngIf="!loader">
+        <img src="assets/img/excel.svg">
+        Download Excel</ng-container>
+      <ng-container *ngIf="loader">Downloading</ng-container>
     </button>
 
-    <button mat-fab class="excel pulse" (click)="exportAsXLSX('checkinAll',2)"
-      *ngIf="!show_today && assign_login_data2.export_checkin=='1'">
-      <img src="assets/img/excel.svg">
-      Download Excel
+    <button mat-fab class="excel pulse" (click)="exportAsXLSX('checkinAll',2)" [disabled]="loader"
+      [ngClass]="{'loading':loader}" *ngIf="!show_today && assign_login_data2.export_checkin=='1'">
+      <ng-container *ngIf="!loader">
+        <img src="assets/img/excel.svg">
+        Download Excel</ng-container>
+      <ng-container *ngIf="loader">Downloading</ng-container>
     </button>
   </div>
 </div>

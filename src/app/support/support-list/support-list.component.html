@@ -215,9 +215,11 @@
 
 
   <div class="fab-btns" *ngIf="assign_login_data2.export_support=='1'">
-    <button mat-fab class="excel pulse" *ngIf="supportList_data.length > 0" (click)="exportAsXLSX();">
+    <button mat-fab class="excel pulse" *ngIf="supportList_data.length > 0" (click)="exportAsXLSX();" [disabled]="loader" [ngClass]="{'loading':loader}">
+     <ng-container *ngIf="!loader">
       <img src="assets/img/excel.svg">
-      Download Excel
+      Download Excel</ng-container>
+      <ng-container *ngIf="loader">Downloading</ng-container>
     </button>
   </div>
 </div>

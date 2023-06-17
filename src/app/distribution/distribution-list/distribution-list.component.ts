@@ -22,6 +22,7 @@ export class DistributionListComponent implements OnInit {
   retailer_type = 'Dr';
   filter: any = {}
   excelLoader: boolean = false;
+  downloadingLoader: boolean = false;
   pageCount: any;
   value: any = {};
   dr_list_temp: any = [];
@@ -192,19 +193,19 @@ export class DistributionListComponent implements OnInit {
   excel_data: any = [];
   downloadExcel() {
     this.excelLoader = true;
+    this.downloadingLoader=true;
     this.serve.post_rqst({ 'search': this.value, 'type': this.type_id, 'filter': this.filter, 'type_name': this.type }, "Excel/dr_list").subscribe((result) => {
       if (result['msg'] == true) {
+        this.downloadingLoader=false;
         window.open(this.downurl + result['filename']);
         this.excelLoader = false;
         this.distributorList('', this.column, this.sorting_type);
-
       } else {
-
+        this.downloadingLoader=false;
       }
-
     }, err => {
       this.excelLoader = false;
-
+      this.downloadingLoader=false;
     });
   }
 

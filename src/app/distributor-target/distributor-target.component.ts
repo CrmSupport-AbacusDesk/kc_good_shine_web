@@ -137,8 +137,8 @@ export class DistributorTargetComponent implements OnInit {
           window.open(this.downurl + resp['filename'])
           this.get_distributor_list();
         } else {
+          this.loader = false;
         }
-
       })
 
 

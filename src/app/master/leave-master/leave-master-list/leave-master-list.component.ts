@@ -129,8 +129,10 @@ export class LeaveMasterListComponent implements OnInit {
         this.loader = false;
         window.open(this.downurl + result['filename'])
         this.getLeaveMasterList();
+      }else{
+        this.loader = false;
       }
-    });
+    },()=>{this.loader=false;});
   }
 
 }

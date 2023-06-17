@@ -306,13 +306,15 @@ export class AttendenceComponent implements OnInit {
   description: any
 
   downloadExcel(func_name, type) {
+    this.loader=true;
     this.serve.post_rqst({ 'user_id': this.assign_login_data2.id, 'search': this.data, 'user_type': this.assign_login_data2.type, 'attendence_type': this.attendence_type }, "Excel/" + func_name)
       .subscribe(((result: any) => {
         if (result['msg'] == true) {
+        this.loader=false;
           window.open(this.downurl + result['filename'])
           this.attendance_list('getAttendance', type);
         } else {
-
+        this.loader=false;
         }
 
       }));

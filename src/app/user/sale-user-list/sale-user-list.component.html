@@ -321,10 +321,10 @@
     <div class="fab-btns">
         <div class="fab-btns"
             *ngIf="(logined_user_data2.export_users_master=='1') ||( logined_user_data2.add_users_master=='1' )|| (logined_user_data2.import_users_master=='1')">
-            <button class="pulse excel" mat-fab color="primary" [ngClass]="{'pulse': fabBtnValue=='add'}"
-                [matMenuTriggerFor]="menu">
-                <i class="material-icons">apps</i>
-                Action
+            <button class="pulse excel" mat-fab color="primary" [disabled]="downloadingLoader" [ngClass]="{'pulse': fabBtnValue=='add','loading':downloadingLoader}" [matMenuTriggerFor]="menu">
+               <ng-container *ngIf="!downloadingLoader"><i class="material-icons">apps</i>
+                Action</ng-container> 
+                <ng-container *ngIf="downloadingLoader">Downloading</ng-container>
             </button>
         </div>
         <mat-menu #menu="matMenu">

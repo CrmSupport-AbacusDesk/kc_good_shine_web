@@ -25,7 +25,8 @@ export class OrderListComponent implements OnInit {
   excelLoader: boolean = false;
   count: any;
   total_page: any;
-  loader: any;
+  loader:boolean=false;
+  downloadingLoader:boolean=false;
   tmp_list: any = [];
   tmp_orderlist: any = [];
   data: any = [];
@@ -141,7 +142,7 @@ export class OrderListComponent implements OnInit {
     this.search_val.order_status = this.active_tab
     this.search_val.month = this.OrderMonth
     this.search_val.year = this.OrderYear
-    this.loader = 1;
+    this.loader = true;
     this.serve.post_rqst({ 'start': this.start, 'pagelimit': this.page_limit, 'search': this.search_val, 'login_user': this.login_dr_id, 'month': month, 'year': year }, "Order/primaryOrderList")
       .subscribe((result => {
         if (result['statusCode'] == 200) {
@@ -150,7 +151,7 @@ export class OrderListComponent implements OnInit {
           this.calenderInfo = result['calenderInfo'];
           this.totalData = result['total'];
           setTimeout(() => {
-            this.loader = '';
+            this.loader = false;
           }, 700);
           this.filter_order_data(this.tabStatus);
           for (let index = 0; index < this.calenderInfo.length; index++) {
@@ -217,7 +218,7 @@ export class OrderListComponent implements OnInit {
           }
         } else {
           setTimeout(() => {
-            this.loader = '';
+            this.loader = false;
           }, 700);
           this.toast.errorToastr(result['statusMsg'])
         }
@@ -272,18 +273,18 @@ export class OrderListComponent implements OnInit {
     this.route.navigate(['/order-detail/' + id], { queryParams: { id, status } });
   }
   exportAsXLSX(month, year) {
-    this.loader = true;
+    this.downloadingLoader = true;
     this.serve.post_rqst({ 'start': this.start, 'pagelimit': this.page_limit, 'search': this.search_val, 'login_user': this.login_dr_id, 'month': month, 'year': year }, "Excel/primary_order_list")
       .subscribe((result) => {
         if (result['msg'] == true) {
-          this.loader = false;
+          this.downloadingLoader = false;
           window.open(this.downurl + result['filename'])
           this.orderList('', this.OrderMonth, this.OrderYear);
         } else {
-          this.loader = false;
+          this.downloadingLoader = false;
         }
       }, err => {
-        this.loader = false;
+        this.downloadingLoader = false;
 
       });
   }

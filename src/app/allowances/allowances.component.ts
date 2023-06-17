@@ -17,6 +17,7 @@ export class AllowancesComponent implements OnInit {
   designation: any;
   userRoleData: any = [];
   allowanceData: any = [];
+  downloadingLoader:boolean=false;
   loader: any;
   skLoading: boolean=false;
   logined_user_data2: any;
@@ -134,12 +135,19 @@ export class AllowancesComponent implements OnInit {
   }
 
   getAlllowanceExcel() {
+    this.downloadingLoader=true;
     this.loader = true;
     this.serve.post_rqst({ 'designation': this.designation }, "Excel/allownceCsv").subscribe((result) => {
       if (result['msg'] == true) {
+        this.downloadingLoader=false;
         window.open(this.downurl + result['filename'])
         this.get_allowance();
       }
-    });
+      else{
+        this.downloadingLoader=false;
+      }
+      
+    },()=>{this.downloadingLoader=false;}
+    );
   }
 }

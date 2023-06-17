@@ -240,15 +240,17 @@ export class SubcategoryComponent implements OnInit {
       }
       download_excl()
       {
-        this.service.post_rqst({'search':this.value},"Excel/get_category_list").subscribe((result=>{
+        this.loader=true;
+        this.service.post_rqst({'search':this.value},"Excel/get_category_list").subscribe(result=>{
           
           if(result['msg'] == true){
+            this.loader=false;
             window.open(this.downurl + result['filename'])
             this.getSegmentList('');
           }else{
+            this.loader=false;
           }
-          
-        }));
+        },()=>{this.loader=false;});
         
       }
       refresh()

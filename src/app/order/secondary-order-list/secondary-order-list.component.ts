@@ -22,6 +22,7 @@ export class SecondaryOrderListComponent implements OnInit {
   fabBtnValue: any = 'add';
   total_page: any;
   loader: any;
+  downloadingLoader:any
   tmp_list: any = [];
   data: any = [];
   value: any = {};
@@ -290,15 +291,15 @@ export class SecondaryOrderListComponent implements OnInit {
 
 
   exportAsXLSX(month, year) {
-    this.loader = true;
+    this.downloadingLoader = true;
     this.serve.post_rqst({ 'start': this.start, 'pagelimit': this.page_limit, 'search': this.search_val, 'login_user': this.login_dr_id, 'month': month, 'year': year }, "Excel/secondary_order_list")
       .subscribe((result => {
         if (result['msg'] == true) {
-          this.loader = false;
+          this.downloadingLoader = false;
           window.open(this.downurl + result['filename'])
           this.orderList('', this.OrderMonth, this.OrderYear);
         } else {
-          this.loader = false;
+          this.downloadingLoader = false;
         }
       }));
   }

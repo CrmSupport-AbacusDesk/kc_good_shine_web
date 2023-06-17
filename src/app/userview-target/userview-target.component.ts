@@ -198,11 +198,14 @@ export class UserviewTargetComponent implements OnInit {
 
   exportAsXLSX(): void {
     // Excel/user_visit_target_list
+    this.loader=true;
     this.serve.FileData({ 'search': this.value }, "Excel/employee_primary_sale_target_list_for_export").subscribe(resp => {
       if (resp['msg'] == true) {
+        this.loader=false;
         window.open(this.downurl + resp['filename'])
         this.get_user_data();
       } else {
+        this.loader=false;
       }
 
     })

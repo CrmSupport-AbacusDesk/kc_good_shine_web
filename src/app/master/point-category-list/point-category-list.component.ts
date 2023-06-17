@@ -18,6 +18,7 @@ export class PointCategoryListComponent implements OnInit {
   no_found:boolean = false;
   pointCategories_data:any=[];
   loader:boolean = false;
+  downloadingLoader:boolean=false;
   filter:any = {};
   sr_no:any=0;
   pageCount:any;
@@ -109,14 +110,16 @@ export class PointCategoryListComponent implements OnInit {
   
   
   getpointCategoryExcel(user_type) {
-    
+    this.downloadingLoader=true;
     this.service.post_rqst({'filter':this.filter}, "Excel/point_category_master_list_for_export").subscribe((result) => {
       if(result['msg'] == true){
+        this.downloadingLoader=false;
         window.open(this.downurl + result['filename'])
         this.pointCategory_data(this.active_tab);
       }else{
+        this.downloadingLoader=false;
       }
-    });
+    },()=>{this.downloadingLoader=true;});
   }
   lastBtnValue(value){
     this.fabBtnValue = value;
