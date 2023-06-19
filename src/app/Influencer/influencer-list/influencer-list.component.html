@@ -66,6 +66,7 @@
               <!-- <th class="w100">Country</th> -->
               <th class="w130">State</th>
               <th class="w130">District</th>
+              <th class="w130">Sales Executive</th>
               <ng-container *ngIf="checkRight.scanning_rights == 'Yes' || checkRight.point_transfer_right == 'Yes' ">
                 <th class="w120">Current Wallet Balance
                   <div class="sorting">
@@ -142,6 +143,14 @@
                   </mat-form-field>
                 </div>
               </th>
+              <th class="w130">
+                <div class="th-search-acmt">
+                  <mat-form-field class="example-full-width cs-input select-input">
+                    <input matInput placeholder="Search..." type="text" name="sales_user_id" [(ngModel)]="filter.sales_user_name"
+                      (keyup.enter)="InfluencerList()">
+                  </mat-form-field>
+                </div>
+              </th>
               <ng-container *ngIf="checkRight.scanning_rights == 'Yes' || checkRight.point_transfer_right == 'Yes' ">
                 <th class="w120 text-center">&nbsp;</th>
               </ng-container>
@@ -176,6 +185,7 @@
                 <!-- <td class="w100">{{row.country}}</td> -->
                 <td class="w130">{{row.state}}</td>
                 <td class="w130">{{row.district}}</td>
+                <td class="w130"><strong>{{row.sales_user_name | titlecase }} - {{row.sales_user_mobile}}</strong></td>
                 <ng-container *ngIf="checkRight.scanning_rights == 'Yes' || checkRight.point_transfer_right == 'Yes' ">
                   <td class="w120 text-right"><strong>{{row.wallet_point?row.wallet_point + ' PT':'---'}}</strong></td>
                 </ng-container>

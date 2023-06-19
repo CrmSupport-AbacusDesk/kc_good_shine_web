@@ -160,10 +160,15 @@
                   </p>
                 </div>
                 <div class="block-feilds">
-                  <span>Select Sales Executive</span>
+                  <span>Sales Executive Name</span>
                   <p>
-                    {{Influencer_Detail.sales_user_id && Influencer_Detail.sales_user_id != '0000-00-00 00:00:00'?
-                    (Influencer_Detail.sales_user_id | date:'MMM d, y, h:mm:a') : '--'}}
+                    {{Influencer_Detail.sales_user_name? (Influencer_Detail.sales_user_name | titlecase) : '--'}}
+                  </p>
+                </div>
+                <div class="block-feilds">
+                  <span>Sales Executive Mobile No</span>
+                  <p>
+                    {{Influencer_Detail.sales_user_mobile? (Influencer_Detail.sales_user_mobile | titlecase) : '--'}}
                   </p>
                 </div>
               </ng-container>
