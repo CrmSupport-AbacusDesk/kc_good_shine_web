@@ -208,7 +208,7 @@
                         <mat-form-field appearance="outline">
                           <mat-label>District</mat-label>
                           <mat-select name="district" #district="ngModel" [(ngModel)]="data.district" required
-                          (selectionChange)="AssignSalesEmp()">
+                          (selectionChange)="AssignSalesEmp(data.district)">
                             <mat-option disabled="">Select District</mat-option>
                             <mat-option *ngFor="let row of district_list" value="{{row.district_name}}">
                               {{row.district_name}}
@@ -221,21 +221,26 @@
                       </div>
                       <div class="col s12 m6 l6">
                         <mat-form-field appearance="outline">
-                          <mat-label>Select Sales Executive</mat-label>
+                          <mat-label>Sales Executive</mat-label>
                           <mat-select name="sales_user_id" #sales_user_id="ngModel" [(ngModel)]="data.sales_user_id" required
                            >
-                            <mat-option disabled="">Select Sales Executive</mat-option>
-                            <mat-option *ngFor="let row of states" value="{{row.state_name}}">
-                              {{row.state_name}}
+                           <mat-option >
+                            <ngx-mat-select-search  placeholderLabel="Search.."  (keyup)="getEmploye($event.target.value)"></ngx-mat-select-search>
+                          </mat-option>
+                          
+
+
+                            <!-- <mat-option disabled="">Select Sales Executive</mat-option> -->
+                            <mat-option *ngFor="let row of sales_list" value="{{row.id}}">
+                              {{row.name}}-{{row.contact_01}}
                             </mat-option>
                           </mat-select>
                         </mat-form-field>
       
-                        <div class="alert alert-danger" *ngIf="state.touched || f.submitted">
-                          <p *ngIf="state.errors?.required">This field is required</p>
-                        </div>
-      
+                       
                       </div>
+
+                
                     </ng-container>
                     <!-- <ng-container *ngIf="data.country=='nepal'">
                       <div class="col s12 m6 l6">

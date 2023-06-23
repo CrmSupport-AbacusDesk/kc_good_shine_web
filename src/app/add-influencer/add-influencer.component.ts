@@ -73,9 +73,12 @@ export class AddInfluencerComponent implements OnInit {
     architectUser:any =[];
     contractorUser:any =[];
     user_assign_detail:any=[];
+    sales_list: any =[];
+    employe_code:any =[];
     
     constructor(
         public service: DatabaseService,
+        public db: DatabaseService,
         public rout: Router,
         public location: Location,
         public route: ActivatedRoute,
@@ -484,11 +487,29 @@ export class AddInfluencerComponent implements OnInit {
 
             AssignSalesEmp(district){
                 this.service.post_rqst({'state':this.data.state, 'district':district}, "Influencer/saleExecutiveList").subscribe((result => {
+                    if (result['statusCode'] == 200) {
+                        this.sales_list = result['response'];
+                    }
+                    else{
+                        this.toast.errorToastr(result['statusMsg']);
+                    }
                    
                 }));
     
             }
+
+
+            getEmploye(e){
+                this.db.post_rqst({'search':e}, 'Influencer/saleExecutiveList').subscribe(r=>{
+                  console.log(r);
+                  this.employe_code=r['all_sales_user'];
+                  console.log(this.employe_code);
+                })
+              }
+
+           
         }
+
 
        
         
