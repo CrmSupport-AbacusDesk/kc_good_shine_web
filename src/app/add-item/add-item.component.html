@@ -87,12 +87,10 @@
                       *ngIf="product_list.length && colorList.length>0 && orderData.color  && orderData.brand">
                       <a mat-raised-button type="button" [disabled]="addToListButton" (click)="addToList()"
                         color="accent">Add To list</a>
-
                     </div>
                     <div class="text-right" *ngIf="product_list.length && colorList.length==0 && orderData.brand">
                       <a mat-raised-button type="button" [disabled]="addToListButton" (click)="addToList()"
                         color="accent">Add To list</a>
-
                     </div>
                   </div>
                 </div>
