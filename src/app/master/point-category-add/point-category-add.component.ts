@@ -18,7 +18,6 @@ export class PointCategoryAddComponent implements OnInit {
     this.userData = JSON.parse(localStorage.getItem('st_user'));
     this.userId=this.userData['data']['id'];
     this.userName=this.userData['data']['name'];
-
     this.data.point_type='Item Box'
   }
   
