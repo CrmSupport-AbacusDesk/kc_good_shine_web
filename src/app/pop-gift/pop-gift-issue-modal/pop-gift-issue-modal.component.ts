@@ -176,17 +176,14 @@ add_stock() {
   this.data1.created_by_id = this.logIN_user.data.id;
   this.data1.created_by_name = this.logIN_user.data.name;
   
-  this.savingFlag = true;
   this.serve.post_rqst({'data':this.data1}, "PopGift/submitStock").subscribe((result => {
     if(result['statusCode'] == 200){
-      this.savingFlag = false;
       this.toast.successToastr(result['statusMsg']);
       this.dialog.closeAll();
     }
     
     else{
       this.dialogRef.disableClose = false;
-      this.savingFlag = false;
       this.toast.errorToastr(result['statusMsg']);
     }
   }))

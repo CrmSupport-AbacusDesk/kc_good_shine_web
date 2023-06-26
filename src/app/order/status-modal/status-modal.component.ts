@@ -272,9 +272,11 @@ export class StatusModalComponent implements OnInit {
 
   }
   add_subCategory() {
+    console.log("sub category list")
     this.savingFlag = true;
     this.data.created_by_name = this.userName;
     this.data.created_by_id = this.userId;
+    console.log("sub category list")
     this.serve.post_rqst(this.data, "Master/addSubCategory").subscribe((result => {
       if (result['statusCode'] == 200) {
         this.toast.successToastr(result['statusMsg']);
