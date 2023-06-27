@@ -89,21 +89,25 @@
                       <mat-datepicker #picker disabled="false"></mat-datepicker>
                     </mat-form-field>
                   </div>
-                  <div class="col s12 m3 l3"
-                    *ngIf="checkRight.scanning_rights == 'Yes' || checkRight.point_transfer_right == 'Yes' ">
-                    <mat-form-field class="cs-input" appearance="outline">
-                      <mat-label>D.O.A</mat-label>
-                      <input name="D.O.A" matInput [matDatepicker]="pickers" placeholder="" #doa="ngModel"
-                        [max]="myDate" [(ngModel)]="data.doa" disabled>
-                      <mat-datepicker-toggle matSuffix [for]="pickers"></mat-datepicker-toggle>
-                      <mat-datepicker #pickers disabled="false"></mat-datepicker>
-                    </mat-form-field>
-                  </div>
+              
                 </ng-container>
               </div>
 
-              <div class="row" *ngIf="params_network!='Customer'">
-                <div class="col s12 m3 l3">
+              <div class="row" >
+
+                <div class="col s12 m3 l3"
+                *ngIf="checkRight.scanning_rights == 'Yes' || checkRight.point_transfer_right == 'Yes' ">
+                <mat-form-field class="cs-input" appearance="outline">
+                  <mat-label>D.O.A</mat-label>
+                  <input name="D.O.A" matInput [matDatepicker]="pickers" placeholder="" #doa="ngModel"
+                    [max]="myDate" [(ngModel)]="data.doa" disabled>
+                  <mat-datepicker-toggle matSuffix [for]="pickers"></mat-datepicker-toggle>
+                  <mat-datepicker #pickers disabled="false"></mat-datepicker>
+                </mat-form-field>
+              </div>
+
+              <ng-container *ngIf="params_network!='Customer'">
+                <div class="col s12 m3 l3" >
                   <mat-form-field appearance="outline" [ngClass]="{'has-error' : dealer_name.invalid } ">
                     <mat-label>Dealer Name</mat-label>
                     <input matInput placeholder="Type Here ..." name="dealer_name" #dealer_name="ngModel"
@@ -125,6 +129,24 @@
                     <p *ngIf="mobile_no.errors?.required">This field is required</p>
                   </div>
                 </div>
+
+                
+              </ng-container>
+              <div class="col s12 m3 l3">
+                <mat-form-field class="cs-input" appearance="outline">
+                  <mat-label>Sales User</mat-label>
+                  <mat-select name="user_assign" multiple  [(ngModel)]="data.user_assign" #user_assign="ngModel" [ngClass]="{'has-error' : user_assign.invalid }" required>
+                    <mat-option>
+                      <ngx-mat-select-search noEntriesFoundLabel="'no data found'" placeholderLabel="Search.."
+                      (keyup)="getSalesUser($event.target.value)"></ngx-mat-select-search>
+                    </mat-option>
+                    <mat-option *ngFor="let row of salesUser" value="{{row.id}}">{{row.name}} {{row.role_name}}</mat-option>
+                  </mat-select>
+                </mat-form-field>
+                <div class="alert alert-danger" *ngIf="user_assign.touched || f.submitted">
+                  <p *ngIf="user_assign.errors?.required">This field is required</p>
+                </div>
+              </div>
                 <!-- <div class="col s12 m3 l3">
                   <mat-form-field appearance="outline" [ngClass]="{'has-error' : distributor_name.invalid } ">
                     <mat-label>Distributor Name</mat-label>
@@ -163,21 +185,7 @@
 
                     </div>
 
-                    <div class="col s12 m3 l3">
-                      <mat-form-field class="cs-input" appearance="outline">
-                        <mat-label>Sales User</mat-label>
-                        <mat-select name="user_assign" multiple [(ngModel)]="data.user_assign" #user_assign="ngModel" [ngClass]="{'has-error' : user_assign.invalid }" required>
-                          <mat-option>
-                            <ngx-mat-select-search noEntriesFoundLabel="'no data found'" placeholderLabel="Search.."
-                            (keyup)="getSalesUser($event.target.value)"></ngx-mat-select-search>
-                          </mat-option>
-                          <mat-option *ngFor="let row of salesUser" value="{{row.id}}">{{row.name}} {{row.role_name}}</mat-option>
-                        </mat-select>
-                      </mat-form-field>
-                      <div class="alert alert-danger" *ngIf="user_assign.touched || f.submitted">
-                        <p *ngIf="user_assign.errors?.required">This field is required</p>
-                      </div>
-                    </div>
+            
                   </ng-container> -->
 
 
@@ -220,7 +228,7 @@
                         </div>
                       </div>
                       <div class="col s12 m6 l6">
-                        <mat-form-field appearance="outline">
+                        <!-- <mat-form-field appearance="outline">
                           <mat-label>Sales Executive</mat-label>
                           <mat-select name="sales_user_id" #sales_user_id="ngModel" [(ngModel)]="data.sales_user_id" required
                            >
@@ -228,16 +236,13 @@
                             <ngx-mat-select-search  placeholderLabel="Search.."  (keyup)="getEmploye($event.target.value)"></ngx-mat-select-search>
                           </mat-option>
                           
-
-
-                            <!-- <mat-option disabled="">Select Sales Executive</mat-option> -->
                             <mat-option *ngFor="let row of sales_list" value="{{row.id}}">
                               {{row.name}}-{{row.contact_01}}
                             </mat-option>
                           </mat-select>
-                        </mat-form-field>
+                        </mat-form-field> -->
       
-                       
+                     
                       </div>
 
                 

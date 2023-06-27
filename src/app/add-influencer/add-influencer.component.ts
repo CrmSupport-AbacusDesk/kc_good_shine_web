@@ -145,17 +145,14 @@ export class AddInfluencerComponent implements OnInit {
                    
                     if(this.data.state){
                         this.getDistrict(1);
+                        this.AssignSalesEmp(this.data.district)
                     }
                     if(this.data.dob == '0000-00-00'){
                         this.data.dob = '';
                     }
                     if(this.data.doa == '0000-00-00'){
                         this.data.doa = '';
-                    }
-                    setTimeout(() => {
-                        
-                    }, 300);
-                    
+                    }   
                 }
                 else{
                     this.toast.errorToastr(resp['statusMsg']);
