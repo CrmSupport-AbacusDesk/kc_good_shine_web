@@ -35,6 +35,7 @@ export class BonusDetailsComponent implements OnInit {
   select_all: any = false;
   removeUser: any = [];
   unRemoveUser: any = [];
+  btn:boolean = false;
 
   constructor(public route: ActivatedRoute, public toast: ToastrManager, public dialog: MatDialog, public dialogs: DialogComponent, public session: sessionStorage, public rout: Router, public service: DatabaseService, public alrt: MatDialog) {
     this.assign_login_data = this.session.getSession();
@@ -111,11 +112,14 @@ export class BonusDetailsComponent implements OnInit {
 
   select_item(event, indx) {
     if (event.checked) {
+      this.btn = true;
       this.removeUser.push(this.runningScheme[indx]['id']);
       let idx = this.unRemoveUser.findIndex(row => row.id == this.runningScheme[indx].id);
       this.unRemoveUser.splice(idx, 1);
+    
     }
     else {
+      this.btn = false;
       let idx = this.removeUser.findIndex(row => row.id == this.runningScheme[indx].id);
       this.removeUser.splice(idx, 1);
       this.unRemoveUser.push(this.runningScheme[indx]['id']);
