@@ -36,6 +36,15 @@ export class PointMasterComponent implements OnInit {
         this.data.birthday_point =  resp['point_master_detail']['birthday_point'];
         this.data.registration_refferal =  resp['point_master_detail']['registration_refferal'];
         this.data.transaction_incentive =  resp['point_master_detail']['transaction_incentive'];
+        this.data.redemption = resp['point_master_detail']['redemption'];
+        if(this.data.redemption == 1){
+          this.data.redemption = '1'
+        }
+        else{
+          this.data.redemption = '0'
+        }
+        console.log(this.data.redemption);
+        
       }
       else{
         this.toast.errorToastr(resp['statusMsg']);
