@@ -73,7 +73,6 @@ export class AddDistributionComponent implements OnInit {
         public session: sessionStorage, 
         private http: HttpClient) {
             
-            
             this.getSalesUser('');
             this. getBrand()
             this.getStateList();
@@ -97,6 +96,8 @@ export class AddDistributionComponent implements OnInit {
                 this.userData = JSON.parse(localStorage.getItem('st_user'));
                 this.userId = this.userData['data']['id'];
                 this.userName = this.userData['data']['name'];
+                this.distributorList('','');
+
                 
             });
         }

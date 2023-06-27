@@ -350,6 +350,8 @@ export class UploadFileModalComponent implements OnInit {
         this.excel_loader = false;
         this.uploadError = true;
         this.uploadErrorMsg = d['statusMsg'];
+        this.toast.errorToastr(d['statusMsg']);
+        console.log(this.uploadErrorMsg)
         this.uploadErrorMsgCount = d['response'];
         this.excel_loader = false;
       }
@@ -367,7 +369,7 @@ export class UploadFileModalComponent implements OnInit {
     this.formData.append('created_by_id', this.userId)
     this.formData.append('created_by_name', this.userName)
     this.excel_loader = true;
-    this.serve.FileData(this.formData, 'Enquiry/add_enquiry_by_csv')
+    this.serve.FileData(this.formData, 'Enquiry/addEnquiryByCsv')
       .subscribe(d => {
         this.dialogRef.disableClose = false;
         this.formData = new FormData();
