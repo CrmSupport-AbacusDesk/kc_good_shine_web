@@ -44,8 +44,7 @@
 
 <!-- sales user list -->
 <div class="edit-modal" *ngIf="come_from == 'salesUser'">
-    <p class="heading">{{savingFlag == true ? 'Please Wait ...': (modal_type=='insert'?'Upload User
-        List':modal_type=='update'?'Update User List':null)}}</p>
+    <p class="heading">{{savingFlag == true ? 'Please Wait ...': (modal_type=='insert'?'Upload User List':modal_type=='update'?'Update User List':null)}}</p>
     <div mat-dialog-content>
         <div class="dialog-content">
             <div class="excel-box">
@@ -82,8 +81,7 @@
 <!-- sales user list -->
 
 <div class="edit-modal" *ngIf="come_from == 'user_visit_target'">
-    <p class="heading">{{savingFlag == true ? 'Please Wait ...': (modal_type=='visit add'?'Upload User
-        Target':modal_type=='visit update'?'Update User Target':'')}}</p>
+    <p class="heading">{{savingFlag == true ? 'Please Wait ...': (modal_type=='visit add'?'Upload User Target':modal_type=='visit update'?'Update User Target':'')}}</p>
 
     <div mat-dialog-content>
         <div class="dialog-content">
@@ -182,8 +180,7 @@
     </div>
 </div>
 <div class="edit-modal" *ngIf="come_from == 'distributor_target'">
-    <p class="heading">{{savingFlag == true ? 'Please Wait ...': (modal_type=='add new'?'Upload Distributor
-        Target':modal_type=='update'?'Update Distributor Target':null)}}</p>
+    <p class="heading">{{savingFlag == true ? 'Please Wait ...': (modal_type=='add new'?'Upload Distributor Target':modal_type=='update'?'Update Distributor Target':null)}}</p>
     <div mat-dialog-content>
         <div class="dialog-content">
             <div class="cs-form pl16 pr16" *ngIf="modal_type == 'update'">
@@ -371,8 +368,7 @@
 </div>
 
 <div class="edit-modal" *ngIf="come_from == 'secondary_target'">
-    <p class="heading">{{savingFlag == true ? 'Please Wait ...': (modal_type=='secondary sale'?'Upload Secondary
-        Target':modal_type=='secondary sale Update'?'Update Secondary Target':'')}}</p>
+    <p class="heading">{{savingFlag == true ? 'Please Wait ...': (modal_type=='secondary sale'?'Upload Secondary Target':modal_type=='secondary sale Update'?'Update Secondary Target':'')}}</p>
     <div mat-dialog-content>
         <div class="dialog-content">
 
@@ -655,21 +651,17 @@
                     <p *ngIf="excel_name != ''">{{excel_name}}</p>
                 </label>
                 <a *ngIf="modal_type == 'update'" (click)="otherSample(modal_type)"><i
-                        class="material-icons">download</i>{{type == 3 ? 'Dealer' : (type == 1 ? 'Distributor' : 'Direct
-                    Dealer')}} sample file</a>
+                        class="material-icons">download</i>{{type == 3 ? 'Dealer' : (type == 1 ? 'Distributor' : 'Direct                    Dealer')}} sample file</a>
                 <a *ngIf="modal_type =='insert'" (click)="distributorSample(modal_type)"><i
-                        class="material-icons">download</i>{{type == 3 ? 'Dealer' : (type == 1 ? 'Distributor' : 'Direct
-                    Dealer')}} sample file</a>
+                        class="material-icons">download</i>{{type == 3 ? 'Dealer' : (type == 1 ? 'Distributor' : 'Direct                    Dealer')}} sample file</a>
                 <a *ngIf="modal_type =='credit_limit'" (click)="otherSample(modal_type)"><i
-                        class="material-icons">download</i>{{type == 3 ? 'Dealer' : (type == 1 ? 'Distributor' : 'Direct
-                    Dealer')}} credit limit sample file</a>
+                        class="material-icons">download</i>{{type == 3 ? 'Dealer' : (type == 1 ? 'Distributor' : 'Direct                    Dealer')}} credit limit sample file</a>
                 <a *ngIf="modal_type =='geo_location'" (click)="otherSample(modal_type)"><i
-                        class="material-icons">download</i>{{type == 3 ? 'Dealer' : (type == 1 ? 'Distributor' : 'Direct
-                    Dealer')}} geo location sample file</a>
+                        class="material-icons">download</i>{{type == 3 ? 'Dealer' : (type == 1 ? 'Distributor' : 'Direct                    Dealer')}} geo location sample file</a>
             </div>
         </div>
 
-        <div *ngIf="uploadError">
+        <!-- <div *ngIf="uploadError">
             <p mat-dialog-title>Failed To Upload: <span class="red-clr">Failed: {{uploadErrorMsgCount.failed}}</span> |
                 <span class="green-clr">Success: {{uploadErrorMsgCount.Success}}</span>
             </p>
@@ -696,7 +688,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> -->
     </div>
     <div mat-dialog-actions>
         <button mat-stroked-button color="warn" [mat-dialog-close]="false">Cancel</button>
@@ -791,8 +783,7 @@
         </mat-spinner>
     </div>
 
-    <p class="heading">{{savingFlag == true ? 'Please Wait ...': (modal_type=='insert'?'Upload Enquiry
-        List':modal_type=='update'?'Update Enquiry List':null)}}</p>
+    <p class="heading">{{savingFlag == true ? 'Please Wait ...': (modal_type=='insert'?'Upload Enquiry List':modal_type=='update'?'Update Enquiry List':null)}}</p>
     <div mat-dialog-content>
         <div class="dialog-content">
             <div class="excel-box">
@@ -823,8 +814,7 @@
 
 
 <div class="edit-modal" *ngIf="come_from == 'uploadSegment'">
-    <p class="heading">{{savingFlag == true ? 'Please Wait ...': (modal_type=='insert'?'Upload
-        Category':modal_type=='update'?'Update Category':null)}}</p>
+    <p class="heading">{{savingFlag == true ? 'Please Wait ...': (modal_type=='insert'?'Upload Category':modal_type=='update'?'Update Category':null)}}</p>
     <div mat-dialog-content>
         <div class="dialog-content">
             <div class="excel-box">

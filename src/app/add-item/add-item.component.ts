@@ -144,6 +144,7 @@ export class AddItemComponent implements OnInit {
         if (resp['statusCode'] == 200) {
           this.product_detail = resp['result'];
           this.brandList = this.product_detail['brand'];
+          console.log(this.brandList)
           this.colorList = this.product_detail['color'];
           this.orderData.product_code = this.product_detail.product_code;
           if (this.brandList.length == 1) {
@@ -207,8 +208,6 @@ export class AddItemComponent implements OnInit {
 
     })
 
-
-
   }
 
   orderDetail() {
@@ -218,6 +217,7 @@ export class AddItemComponent implements OnInit {
       if (result['statusCode'] == 200) {
         this.order_item = result['result']['item_info'];
         this.order_detail = result['result'];
+        console.log(this.order_detail)
         for (let i = 0; i < this.order_item.length; i++) {
           this.order_item[i].product_price = this.order_item[i]['price'];
           this.lastGstPercent = this.order_item[i]['gst_percent'];

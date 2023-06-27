@@ -16,19 +16,21 @@ const EXCEL_EXTENSION = '.xlsx';
 @Injectable({ providedIn: 'root' })
 export class DatabaseService implements OnInit {
 
+    //  https://dev.basiq360.com/kcgoodshine/
 
     // build command:-  npm run ng-high-memory
- 
 
     // // <------------------ live Link ------------------------------>
     // dbUrl = "https://kc-good-shine.basiq360.com/api/index.php/";
     // uploadUrl = "https://kc-good-shine.basiq360.com/api/uploads/";
     // downloadUrl = "https://kc-good-shine.basiq360.com/api/uploads/Download_excel/"; 
 
-    // <------------------ Test Link ------------------------------>
-    dbUrl = "https://dev.basiq360.com/kcgoodshine/api/index.php/"; 
-    uploadUrl = "https://dev.basiq360.com/kcgoodshine/api/uploads/";
-    downloadUrl = "https://dev.basiq360.com/kcgoodshine/api/uploads/Download_excel/";
+
+     // <------------------ Test Link ------------------------------>
+     dbUrl = "https://dev.basiq360.com/kcgoodshine/api/index.php/";
+     uploadUrl = "https://dev.basiq360.com/kcgoodshine/api/uploads/";
+     downloadUrl = "https://dev.basiq360.com/kcgoodshine/api/uploads/Download_excel/"; 
+
 
   
     

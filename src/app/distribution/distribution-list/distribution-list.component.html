@@ -173,7 +173,7 @@
               <th class="w100">Current Year Sales
               </th>
               <th class="w70 text-center" *ngIf="assign_login_data2.edit_channel_partner=='1' || assign_login_data2.edit_dealer=='1' || assign_login_data2.edit_direct_dealers=='1'">Status</th>
-              <th class="w110 text-center">Action</th>
+              <!-- <th class="w110 text-center">Action</th> -->
             </tr>
           </table>
         </div>
@@ -290,9 +290,9 @@
                   </mat-form-field>
                 </div>
               </th>
-              <th class="w110">
+              <!-- <th class="w110">
                 <div>&nbsp;</div>
-              </th>
+              </th> -->
 
             </tr>
           </table>
@@ -348,10 +348,10 @@
                     </mat-slide-toggle>
                   </div>
                 </td>
-                <td class="w110">
+                <!-- <td class="w110">
                   <button mat-raised-button color="accent" *ngIf="row.device_unique_id != ''"
                     (click)="resetDevice(i,row.id)">Reset Device </button>
-                </td>
+                </td> -->
               </tr>
             </ng-container>
             <ng-container *ngIf="loader">
@@ -404,9 +404,9 @@
                 <td class="w70 text-center" *ngIf="assign_login_data2.edit_channel_partner=='1' || assign_login_data2.edit_dealer=='1' || assign_login_data2.edit_direct_dealers=='1'">
                   <div>&nbsp;</div>
                 </td>
-                <td class="w110">
+                <!-- <td class="w110">
                   <div>&nbsp;</div>
-                </td>
+                </td> -->
               </tr>
             </ng-container>
           </table>

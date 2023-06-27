@@ -34,7 +34,9 @@ export class LeadListComponent implements OnInit {
   login_data5: any = {};
   add: any = {};
   filter:any ={}
+  downurl: any = '';
   enquiryList:any=[]
+  downloadingLoader:boolean=false;
   sr_no:any=0;
   pageCount:any;
   total_page:any;
@@ -51,6 +53,7 @@ export class LeadListComponent implements OnInit {
     this.login_data = this.login_data.value;
     this.login_data5 = this.login_data.data;
     this.route.params.subscribe( params => {
+      this.downurl = serve.downloadUrl;
       this.today_date = new Date().toISOString().slice(0, 10);
       this.type_id = params.id;
       this.type = params.type;
@@ -191,6 +194,22 @@ export class LeadListComponent implements OnInit {
         this.leadList(this.active_tab);
       }
     });
+  }
+
+  getEnquiryExcel(active_tab) {
+    this.downloadingLoader = true;
+    this.serve.post_rqst({'filter':this.filter, 'start':this.start,'pagelimit':this.page_limit}, "Excel/enquiryList")
+      .subscribe((result) => {
+        if (result['msg'] == true) {
+          this.downloadingLoader = false;
+          window.open(this.downurl + result['filename'])
+        } else {
+          this.downloadingLoader = false;
+        }
+      }, err => {
+        this.downloadingLoader = false;
+
+      });
   }
   
   
