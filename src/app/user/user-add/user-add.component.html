@@ -154,7 +154,7 @@
                   <mat-form-field appearance="outline">
                     <mat-label>Assign Users</mat-label>
                     <mat-select name="assign_system_user" #assign_system_user="ngModel" multiple
-                      [(ngModel)]="data.assign_system_user" required>
+                      [(ngModel)]="data.assign_system_user">
                       <mat-option>
                         <ngx-mat-select-search noEntriesFoundLabel="'no data found'" placeholderLabel="Search.."
                           (keyup)="getReportManager($event.target.value)"></ngx-mat-select-search>
@@ -165,9 +165,9 @@
                     </mat-select>
                   </mat-form-field>
 
-                  <div class="alert alert-danger" *ngIf="assign_system_user.touched || f.submitted">
+                  <!-- <div class="alert alert-danger" *ngIf="assign_system_user.touched || f.submitted">
                     <p *ngIf="assign_system_user.errors?.required">This field is required</p>
-                  </div>
+                  </div> -->
                 </div>
               </div>
 
