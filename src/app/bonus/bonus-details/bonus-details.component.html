@@ -177,7 +177,7 @@
           </div>
         </div>
         
-        <div class="row" *ngIf="removeUser.length > 0 || select_all">
+        <div class="row" *ngIf="runningScheme.length > 0 && (select_all || btn)">
           <div class="col s12">
             <div class="text-right">
               <button *ngIf="logined_user_data.edit_bonus_points=='1'  && bonusdetail_data.status == 'Active'" [ngClass]="{'loading': savingFlag == true}" mat-raised-button color="warn" (click)="influencerUpdate()" [disabled]="savingFlag == true">
