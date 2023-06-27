@@ -88,8 +88,13 @@ export class AllowancesComponent implements OnInit {
     }));
   }
   refresh() {
+    this.loader = 1;
+    this. designation='';
     this.get_allowance();
+    
   }
+
+
   updateAllowance() {
     for (var i = 0; i < this.userRoleData.length; i++) {
       for (var j = 0; j < this.allowanceData.length; j++) {
