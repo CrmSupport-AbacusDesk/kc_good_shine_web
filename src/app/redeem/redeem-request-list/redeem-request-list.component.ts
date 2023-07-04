@@ -78,7 +78,10 @@ export class RedeemRequestListComponent implements OnInit {
   }
   redeemRequestList() {
     this.filter.status = this.active_tab;
-    this.filter.redeemType = this.redeemType;
+    // this.filter.paymentMode = this.redeemType;
+    this.filter.redeem_type = this.redeemType;
+
+
     this.loader = true;
     if (this.pagenumber > this.total_page) {
       this.pagenumber = this.total_page;
@@ -111,7 +114,7 @@ export class RedeemRequestListComponent implements OnInit {
         } else {
           this.datanotfound = false
         }
-    
+
         if (this.pagenumber > this.total_page) {
           this.pagenumber = this.total_page;
           this.start = this.pageCount - this.page_limit;
@@ -147,7 +150,7 @@ export class RedeemRequestListComponent implements OnInit {
   openDialog(id, type, redeem_type, gift_status, amount): void {
     this.service.currentUserID = id
     if (gift_status == 'Approved') {
-      this.alert.confirm('You want to transfer ₹' + amount + '?').then((result) => {
+      this.alert.confirm('You want to change status?').then((result) => {
         if (result) {
           this.savingFlag = true;
           this.service.post_rqst({ 'status': gift_status, 'id': id, 'created_by_id': this.assign_login_data2.created_by, 'created_by_name': this.assign_login_data2.created_by_name }, 'RedeemRequest/redeemRequestStatusChange').subscribe((result) => {
@@ -239,6 +242,7 @@ export class RedeemRequestListComponent implements OnInit {
       }
     }));
   }
+
   opengiftDialog(id,type, redeem_type, gift_status ): void {
     if(gift_status == 'Received'){
       this.alert.confirm('You want to change status ?').then((result) => {
@@ -256,6 +260,7 @@ export class RedeemRequestListComponent implements OnInit {
         }
       });
     }
+
     else{
       const dialogRef = this.dialog.open(RedeemStatusModalComponent, {
         width: '400px', data: {
