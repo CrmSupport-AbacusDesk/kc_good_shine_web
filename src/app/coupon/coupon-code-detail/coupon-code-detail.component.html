@@ -36,14 +36,21 @@
                   <p style="font-family: 'Roboto', sans-serif;font-size: 9px; font-weight:bold; margin:0;margin-top: -5px;">COUNTRY OF ORIGIN ITALY</p>
                   <p style="font-family: 'Roboto', sans-serif;font-size: 9px; font-weight:bold; margin:0;">Imported Packed and Marketed by</p>
                 </ng-container>
-                <ng-container *ngIf="getData.product_source == 'Manufactured'">
-                  <p style="font-family: 'Roboto', sans-serif;font-size: 15px; font-weight:bold; margin:0;">Manufactured By</p>
+                
+              <div style="position: absolute; bottom: 93px;">
+               <p style="font-family: 'Roboto', sans-serif;font-size: 12px;font-weight:bold; margin:0;">Shake well before use</p>
+               <p style="font-family: 'Roboto', sans-serif;font-size: 12px;font-weight:bold; margin:0;">To be mixed in specified ratio</p>
+              </div>
+                 <!-- *ngIf="getData.product_source == 'Manufactured'" -->
+                <ng-container>
+                  <p style="font-family: 'Roboto', sans-serif;font-size: 12px; font-weight:bold; margin:0;">Manufactured By</p>
                 </ng-container>
-                <h2 style="font-family: 'Roboto', sans-serif;font-size: 8px;margin:0;">KC GOOD SHINE PAINTS INDIA LIMITED</h2>
-               <h2 style="font-family: 'Roboto', sans-serif;font-size: 8px;margin:0;">KRISHANA CHEMICAL</h2>
+                <h2 style="font-family: 'Roboto', sans-serif;font-size: 8px;margin:0;">KC GOOD SHINE</h2>
+               <h2 style="font-family: 'Roboto', sans-serif;font-size: 8px;margin:0;">KRISHNA CHEMICAL</h2>
                <p style="font-family: 'Roboto', sans-serif;font-size: 8px;margin:0;">Sector 46, Sonipat, Haryana 131029</p>
                <p style="font-family: 'Roboto', sans-serif;font-size: 8px;margin:0;">Customer Care No:+91-9717143939</p>
                 <p style="font-family: 'Roboto', sans-serif;font-size: 8px;margin:0;">Email- inquiry@goodshine.in</p>
+                <p style="font-family: 'Roboto', sans-serif;font-size: 8px;margin:0;">Web- www.goodshine.in</p>
               </div>
             </div>
             <div style="text-align: right">
@@ -90,15 +97,22 @@
                 <p style="font-family: 'Roboto', sans-serif;font-size: 9px; font-weight:bold; margin:0;">COUNTRY OF ORIGIN ITALY</p>
                 <p style="font-family: 'Roboto', sans-serif;font-size: 9px; font-weight:bold; margin:0;">Imported Packed and Marketed by</p>
               </ng-container>
-              <ng-container *ngIf="getData.product_source == 'Manufactured'">
+                
+              <div style="position: absolute; bottom: 93px;">
+                <p style="font-family: 'Roboto', sans-serif;font-size: 12px;font-weight:bold; margin:0;">Shake well before use</p>
+                <p style="font-family: 'Roboto', sans-serif;font-size: 12px;font-weight:bold; margin:0;">To be mixed in specified ratio</p>
+               </div>
+              <!-- *ngIf="getData.product_source == 'Manufactured'" -->
+              <ng-container>
                 <p style="font-family: 'Roboto', sans-serif;font-size: 15px; font-weight:bold; margin:0;">Manufactured By</p>
               </ng-container>
 
-              <h2 style="font-family: 'Roboto', sans-serif;font-size: 8px;margin:0;">KC GOOD SHINE PAINTS INDIA LIMITED</h2>
-              <h2 style="font-family: 'Roboto', sans-serif;font-size: 8px;margin:0;">KRISHANA CHEMICAL</h2>
+              <h2 style="font-family: 'Roboto', sans-serif;font-size: 8px;margin:0;">KC GOOD SHINE</h2>
+              <h2 style="font-family: 'Roboto', sans-serif;font-size: 8px;margin:0;">KRISHNA CHEMICAL</h2>
               <p style="font-family: 'Roboto', sans-serif;font-size: 8px;margin:0;">Sector 46, Sonipat, Haryana 131029</p>
               <p style="font-family: 'Roboto', sans-serif;font-size: 8px;margin:0;">Customer Care No:+91-9717143939</p>
               <p style="font-family: 'Roboto', sans-serif;font-size: 8px;margin:0;">Email- inquiry@goodshine.in</p>
+              <p style="font-family: 'Roboto', sans-serif;font-size: 8px;margin:0;">Web- www.goodshine.in</p>
               
               
             </div>
@@ -159,7 +173,7 @@
         </div>
         
         
-        <div class="grid-box two mt12">
+        <div class="grid-box">
           <div class="block-feilds">
             <span>Product Detail</span>
             <p>{{getData.product_detail}}</p>
@@ -221,14 +235,16 @@
                 <li>COUNTRY OF ORIGIN ITALY</li>
                 <li>Imported Packed and Marketed by</li>
               </ng-container>
-              <ng-container *ngIf="getData.product_source == 'Manufactured'">
+              <!-- *ngIf="getData.product_source == 'Manufactured'" -->
+              <ng-container>
                 <li>Manufactured By</li>
               </ng-container>
-              <li>KC GOOD SHINE PAINTS INDIA LIMITED</li>
-              <li>KRISHANA CHEMICAL</li>
+              <li>KC GOOD SHINE</li>
+              <li>KRISHNA CHEMICAL</li>
               <li>Sector 46, Sonipat, Haryana 131029</li>
               <li>Customer Care No:+91-9717143939</li>
               <li>Email- inquiry@goodshine.in</li>
+              <li>Web- www.goodshine.in</li>
               
             </ul>
           </div>
@@ -261,13 +277,16 @@
               <li>COUNTRY OF ORIGIN ITALY</li>
               <li>Imported Packed and Marketed by</li>
             </ng-container>
-            <ng-container *ngIf="getData.product_source == 'Manufactured'">
+            <!-- *ngIf="getData.product_source == 'Manufactured'" -->
+            <ng-container>
               <li>Manufactured By</li>
             </ng-container>
-            <li>Sirca Paints India Limited</li>
-            <li>G-82 kirti Nagar Delhi-110015</li>
-            <li>Customer Care No:011-42083083</li>
-            <li>Email- support@sircapaints.com</li>
+              <li>KC GOOD SHINE</li>
+              <li>KRISHNA CHEMICAL</li>
+              <li>Sector 46, Sonipat, Haryana 131029</li>
+              <li>Customer Care No:+91-9717143939</li>
+              <li>Email- inquiry@goodshine.in</li>
+              <li>Web- www.goodshine.in</li>
           </ul>
         </div>
         <div class="cs-barcode">
