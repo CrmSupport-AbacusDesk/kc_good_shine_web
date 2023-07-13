@@ -91,6 +91,12 @@
                                 <span>Last Updated By</span>
                                 <p>{{getData.last_updated_by_name ? getData.last_updated_by_name : '--'}}</p>
                             </div>
+
+                            <div class="block-feilds">
+                                <span>Unit of Measurement</span>
+                                <p>{{getData.uom ? getData.uom : '--'}}</p>
+                            </div>
+                            
                             
                             <div class="block-feilds">
                                 <span>Last Updated On</span>
@@ -101,6 +107,11 @@
                         </div>
                         
                         <div class="grid-box single mt16">
+
+                            <div class="block-feilds">
+                                <span>Pack QTY</span>
+                                <p>{{getData.qty ? getData.qty : '--'}}</p>
+                            </div>
                             <div class="block-feilds">
                                 <span>Description</span>
                                 <p>{{getData.description ? getData.description:'N/A'}}</p>

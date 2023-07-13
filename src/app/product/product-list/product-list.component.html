@@ -43,6 +43,7 @@
               <th class="w100">Product Code</th>
               <th class="w100">Brand</th>
               <th class="w100">Color</th>
+              <th class="w100">Pack Qty.</th>
               <th class="w120">Point Category</th>
               <th class="w120">Mrp</th>
               <th class="w100 text-center" *ngIf="logined_user_data.edit_products_master=='1'">Status</th>
@@ -123,6 +124,7 @@
                   </mat-form-field>
                 </div>
               </th>
+              <th class="w100"></th>
               <th class="w120">
                 <div class="th-search-acmt">
                   <mat-form-field>
@@ -168,6 +170,7 @@
                 <td class="w100">{{row.product_code && row.product_code!=''? row.product_code:'--'}}</td>
                 <td class="w100 one-line" matTooltip={{row.brand}}>{{row.brand && row.brand!=''? row.brand:'--'}}</td>
                 <td class="w100 one-line" matTooltip={{row.color}}>{{row.color && row.color!=''? row.color:'--'}}</td>
+                <td class="w100">{{row.qty == '0' ? '': row.qty}} {{row.uom && row.uom!= '' ? row.uom:'--'}}</td>
                 <td class="w120 one-line" matTooltip={{row.point_category_name}}>{{row.point_category_name &&
                   row.point_category_name!=''? row.point_category_name:'--'}}</td>
                 <td class="w120 one-line" matTooltip={{row.mrp}}>{{row.mrp && row.mrp!=''? row.mrp:'--'}}</td>

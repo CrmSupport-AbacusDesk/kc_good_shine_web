@@ -228,8 +228,16 @@ export class CouponCodeListComponent implements OnInit {
     this.service.post_rqst({ 'filter': this.filter, 'start': this.start, 'pagelimit': this.page_limit }, '/Excel/coupon_code_all_list').subscribe((result => {
       if (result['msg'] == true) {
         this.loader = false;
-        window.open(this.downurl + result['filename'])
-        this.couponCodeList();
+        window.open(this.downurl + result['filename']);
+
+        if(status == 'scan_item'){
+          this.scanCouponList();
+        }
+        
+        if(status == 'item_box' || status == 'master_box'){
+          this.couponCodeList();  
+        }
+        
       } else {
         this.loader = false;
       }

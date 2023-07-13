@@ -55,9 +55,11 @@
                       <p *ngIf="total_coupon.errors?.required">This field is required</p>
                     </div>
                   </div>
+
+                </div>
                   
-                  
-                  <!-- <div class="col s12 m2 l2">
+                <div class="row">
+                  <div class="col s12 m2 l3">
                     <mat-form-field  appearance="outline">
                       <mat-label>Batch No.</mat-label>
                       <input matInput placeholder="Type Here ..."  name="batch_no" #batch_no="ngModel" [(ngModel)]="data.batch_no" required>
@@ -65,10 +67,7 @@
                     <div class="alert alert-danger" *ngIf="batch_no.touched || f.submitted">
                       <p *ngIf="batch_no.errors?.required">This field is required</p>
                     </div>
-                  </div> -->
-                </div>
-                  
-                <div class="row">
+                  </div>
                   <div class="col s12 m3 l3">
                     <mat-form-field  appearance="outline">
                       <mat-label>Remark</mat-label>
@@ -76,6 +75,7 @@
                       [(ngModel)]="data.coupon_remark">
                     </mat-form-field>
                   </div>
+
                 </div>
               </div>
             </div>
@@ -132,7 +132,7 @@
               <th class="w100">Product Code</th>
               <th class="w110 text-center">Total Coupon</th>
               <th>Remark</th>
-              <!-- <th class="w100">Batch No.</th> -->
+              <th class="w100">Batch No.</th>
               <th class="w70" *ngIf="assign_login_data2.add_coupon_code== 1 || assign_login_data2.delete_coupon_code==1">Action</th>
             </tr>
           </table>
@@ -191,7 +191,7 @@
                 </div>
               </th>
               <th>&nbsp;</th>
-              <!-- <th class="w100">&nbsp;</th> -->
+              <th class="w100">&nbsp;</th>
               <th class="w70" *ngIf="assign_login_data2.add_coupon_code==1 || assign_login_data2.delete_coupon_code==1">&nbsp;</th>
             </tr>
           </table>
@@ -211,7 +211,7 @@
                 <td class="w100">{{row.product_code?row.product_code:'N/A'}}</td>
                 <td class="w110 text-center"><strong>{{row.total_coupon?row.total_coupon:'N/A'}}</strong></td>
                 <td>{{row.remarks?row.remarks:'N/A'}}</td>
-                <!-- <td class="w100">{{row.batch_no ? row.batch_no: '---'}}</td> -->
+                <td class="w100">{{row.batch_no ? row.batch_no: '---'}}</td>
                 <td class="w70 text-center" *ngIf="assign_login_data2.add_coupon_code == 1 || assign_login_data2.delete_coupon_code==1">
                   <div class="action-button">
                     <button  mat-icon-button *ngIf="assign_login_data2.add_coupon_code == 1" matTooltip="View Coupon" routerLink="coupon-code-detail/{{row.id}}">
@@ -235,7 +235,7 @@
                 <td class="w100"><div>&nbsp;</div></td>
                 <td class="w110"><div>&nbsp;</div></td>
                 <td><div>&nbsp;</div></td>
-                <!-- <td class="w100"><div>&nbsp;</div></td> -->
+                <td class="w100"><div>&nbsp;</div></td>
                 <td class="w70" *ngIf="assign_login_data2.add_coupon_code==1 || assign_login_data2.delete_coupon_code==1"><div>&nbsp;</div></td>
               </tr>
             </ng-container>

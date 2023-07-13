@@ -19,7 +19,7 @@ export class CouponCodeDetailComponent implements OnInit {
   coupon_id;
   getData:any ={};
   qrCode:any =[];
-  elementType:any=''
+  
   skLoading:boolean = false;
   today_date:Date;
   
@@ -80,96 +80,19 @@ export class CouponCodeDetailComponent implements OnInit {
           margin-bottom: 0px
         }
         @page { 
-          margin: 0.00in 0.00in  0.00in 0.00in;  
+          margin: 0.07in 0.1in 0.00in;  
         }
         
-        .qr_img{
-          position: relative;
-          text-align: center;
-          font-size: 0.5rem
+        .bar-code-img, .barcode{
+          
+          width:105px !important;
+          min-width:105px !important;
+          height: 110px !important;
         }
-        .qr_img span {
-          position: absolute;
-          left: 0;
-          z-index: 1;
-        }
-        .qr_img ngx-qrcode, .aclass{
-          width: 94.488188976px !important;
-          height: 94.488188976px !important;
-          text-align: center;
-          position: relative;
-        }
-        
- 
-        
-        span.fix-text {
-          position: absolute;
-          left: -20px;
-          top: 30px;
-          transform: rotate(-90deg);
-          font-weight: bold;
-          font-size: 14px;
-          width: 60px;
-          height: 20px;
-          display: flex;
-          justify-content: center;
-        }
-        
-        span.fix-text-code{
-          position: absolute;
-          top: 33px;
-          left: -20px;
-          transform: rotate(-90deg);
-          font-weight: bold;
-          font-size: 8px;
-          height: 15px;
-          width: 60px;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-        }
-        
-        span.fix-text-right {
-          position: absolute;
-          left: 58px;
-          top: 30px;
-          transform: rotate(-90deg);
-          font-weight: bold;
-          font-size: 10px;
-          width: 60px;
-          height: 20px;
-          display: flex;
-          justify-content: center;
-        }
-        
-        span.fix-code {
-          position: absolute;
-          bottom: 8px;
-          font-size: 9px;
+        .barcode svg{
           width: 100%;
-          font-weight: 600;
+          height: 100%;
         }
-        .qr_img img{
-          width: 82px !important;
-          height: 82px !important;
-        }
-        
-        
-        
-        .qr-codes {
-          position: relative;
-        }
-        .qr-codes span{
-          position: absolute;
-          font-size: 10px;
-          bottom: -2px;
-          text-align: center;
-          width: 100%;
-          left:50%;
-          transform:translateX(-50%);
-        }
-        
-        
         
         body
         {
