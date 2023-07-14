@@ -13,7 +13,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'abacusdesk';
+  title:any = 'abacusdesk';
   login_data:any={};
   kei_user:any;
 
