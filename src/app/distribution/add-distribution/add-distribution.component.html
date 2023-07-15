@@ -81,12 +81,12 @@
                                         <p *ngIf="altNumber.errors?.invalid">Number is Invalid...</p>
                                     </div>
                                 </div>
-                                <div class="col s12 m3 l3">
+                                <div class="col s12 m3 l3" *ngIf="dr_type=='3' || dr_type== '7' || dr_type== '1' ">
                                     <mat-form-field appearance="outline"
                                         [ngClass]="{'has-error':f.submitted && gst?.invalid }">
                                         <mat-label>GST Number</mat-label>
-                                        <input type="text" name="gst" maxlength="15" matInput placeholder=""
-                                            #gst="ngModel" [(ngModel)]="data.gst" [required]="dr_type != 3">
+                                        <input type="text" name="gst" maxlength="15" matInput placeholder="" (keypress)="MobileNumber($event)" 
+                                            #gst="ngModel" [(ngModel)]="data.gst" required>
                                     </mat-form-field>
                                     <div class="alert alert-danger" *ngIf="gst.touched || f.submitted">
                                         <p *ngIf="gst.errors?.required">This field is required</p>

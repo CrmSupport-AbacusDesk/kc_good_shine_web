@@ -284,8 +284,7 @@
                   <mat-list class="cs-list-box pt0">
                     <mat-list-item *ngFor="let row of Influencer_Detail.user_assign_detail;">
                       <div class="alphabet">{{row.name ? row.name[0].toUpperCase():'' }}</div>
-                      {{row.name | titlecase}} <strong *ngIf="row.emp_code">&nbsp; &nbsp;
-                        ({{row.emp_code}})</strong>
+                      {{row.name | titlecase}}
                     </mat-list-item>
                   </mat-list>
                 </div>
@@ -322,7 +321,7 @@
 
             <div class="card-body pt0">
                 <mat-list class="cs-list-box pt0">
-                    <mat-list-item *ngFor="let row of Influencer_Detail.user_assign_detail;">
+                    <mat-list-item *ngFor="let row of user_assign_detail;">
                         <div class="alphabet">{{row.name ? row.name[0].toUpperCase():'' }}</div>
                         {{row.name | titlecase}}
                         <strong *ngIf="row.emp_code">&nbsp; &nbsp;({{row.emp_code}})</strong>

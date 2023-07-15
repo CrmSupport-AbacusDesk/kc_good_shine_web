@@ -25,6 +25,7 @@ export class InfluencerDetailComponent implements OnInit {
   tabType: any = 'Profile';
   filter: any = {}
   Influencer_Detail: any = {};
+  user_assign_detail:any=[]
   wallet_Detail: any = {}
   id: any = ''
   wallet_history_type: any = 'ledger'
@@ -78,6 +79,8 @@ export class InfluencerDetailComponent implements OnInit {
       if (resp['statusCode'] == 200) {
         this.Influencer_Detail = resp['result'];
         this.wallet_Detail = this.Influencer_Detail['influencer_data'];
+        this.user_assign_detail = this.Influencer_Detail['sales_user'];
+        console.log('users', this.user_assign_detail)
 
         this.skLoading = false;
       }
